@@ -1,0 +1,60 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 21,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "ninja-multi-default",
+            "displayName": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/builds/${presetName}",
+            "generator": "Ninja Multi-Config",
+            "cacheVariables": {
+                "CMAKE_CONFIGURATION_TYPES": "Release;RelWithDebInfo;Debug",
+                "ENABLE_TESTING": "ON"
+            }
+        },
+        {
+            "name": "ninja-multi-osx-cxx-common",
+            "displayName": "Ninja Multi-Config OSX with cxx-common",
+            "description": "Configure with cxx-common toolchain for x64-osx",
+            "binaryDir": "${sourceDir}/builds/${presetName}",
+            "generator": "Ninja Multi-Config",
+            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "installDir": "${sourceDir}/install",
+            "cacheVariables": {
+                "CMAKE_CONFIGURATION_TYPES": "Release;RelWithDebInfo;Debug",
+                "VCPKG_TARGET_TRIPLET": "x64-osx",
+                "VCPKG_HOST_TRIPLET": "x64-osx"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "ninja-rel",
+            "configurePreset": "ninja-multi-default",
+            "displayName": "Build ninja-multi-release",
+            "configuration": "Release"
+        },
+        {
+            "name": "ninja-deb",
+            "configurePreset": "ninja-multi-default",
+            "displayName": "Build ninja-multi-debug",
+            "configuration": "Debug"
+        },
+        {
+            "name": "ninja-osx-cxx-common-rel",
+            "configurePreset": "ninja-multi-osx-cxx-common",
+            "displayName": "Build osx-release with cxx-common",
+            "configuration": "Release"
+        },
+        {
+            "name": "ninja-osx-cxx-common-deb",
+            "configurePreset": "ninja-multi-osx-cxx-common",
+            "displayName": "Build osx-debug with cxx-common",
+            "configuration": "Debug"
+        }
+    ]
+}
