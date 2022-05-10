@@ -12,20 +12,29 @@
             "binaryDir": "${sourceDir}/builds/${presetName}",
             "generator": "Ninja Multi-Config",
             "cacheVariables": {
-                "CMAKE_CONFIGURATION_TYPES": "Release;RelWithDebInfo;Debug",
+                "CMAKE_CONFIGURATION_TYPES": "Release;Debug",
                 "ENABLE_TESTING": "ON"
             }
         },
         {
-            "name": "ninja-multi-osx-cxx-common",
-            "displayName": "Ninja Multi-Config OSX with cxx-common",
-            "description": "Configure with cxx-common toolchain for x64-osx",
+            "name": "ninja-multi-cxx-common",
+            "hidden": true,
             "binaryDir": "${sourceDir}/builds/${presetName}",
             "generator": "Ninja Multi-Config",
-            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            "toolchainFile": "$env{CXX_COMMON_ROOT}/vcpkg/scripts/buildsystems/vcpkg.cmake",
             "installDir": "${sourceDir}/install",
             "cacheVariables": {
-                "CMAKE_CONFIGURATION_TYPES": "Release;RelWithDebInfo;Debug",
+                "CMAKE_CONFIGURATION_TYPES": "Release;Debug",
+                "VCPKG_OVERLAY_TRIPLETS": "$env{CXX_COMMON_ROOT}/triplets",
+                "VCPKG_OVERLAY_PORTS": "$env{CXX_COMMON_ROOT}/ports"
+            }
+        },
+        {
+            "name": "ninja-multi-osx-cxx-common",
+            "inherits": "ninja-multi-cxx-common",
+            "displayName": "Ninja Multi-Config osx with cxx-common",
+            "description": "Configure with cxx-common toolchain for x64-osx",
+            "cacheVariables": {
                 "VCPKG_TARGET_TRIPLET": "x64-osx",
                 "VCPKG_HOST_TRIPLET": "x64-osx"
             }

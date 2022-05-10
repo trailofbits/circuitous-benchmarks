@@ -5,16 +5,21 @@
 # This source code is licensed in accordance with the terms specified in
 # the LICENSE file found in the root directory of this source tree.
 #
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required( VERSION 3.23 )
 
-project(circuitous-benchmarks
+# check that imported target misses its location
+if ( POLICY CMP0111 )
+  cmake_policy( SET CMP0111 NEW )
+endif ()
+
+project( circuitous-benchmarks
   LANGUAGES C CXX ASM
   VERSION 0.1.0
   DESCRIPTION "Binary to circuit lifter tool benchmarks"
   HOMEPAGE_URL "https://github.com/trailofbits/circuitous-benchmark.git"
 )
 
-find_package(gap CONFIG REQUIRED)
+find_package( gap CONFIG REQUIRED )
 
 set_property( GLOBAL PROPERTY USE_FOLDERS ON )
 
@@ -46,6 +51,7 @@ include( static_analyzers )
 # dependencies
 #
 find_package( benchmark CONFIG REQUIRED )
+find_package( circuitous CONFIG REQUIRED )
 
 #
 # benchmarking tool

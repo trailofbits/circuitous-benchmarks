@@ -6,6 +6,11 @@ add_executable( circ-bench
 target_link_libraries( circ-bench
     PRIVATE
         gap::gap
+
+        circuitous::ir
+        circuitous::lifter
+        circuitous::transforms
+
         circ_bench_project_options
         circ_bench_project_warnings
         benchmark::benchmark

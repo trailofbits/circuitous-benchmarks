@@ -1,7 +1,13 @@
 {
-    "name": "main",
-    "version-string": "latest",
-    "dependencies": [
-      "benchmark"
-    ]
+  "name": "main",
+  "version-string": "latest",
+  "dependencies": [
+    "benchmark",
+    "doctest",
+    "spdlog",
+    "glog",
+    "xed",
+    "z3",
+    "llvm-14"
+  ]
 }
