@@ -14,7 +14,7 @@ endif ()
 
 project( circuitous-benchmarks
   LANGUAGES C CXX ASM
-  VERSION 0.1.0
+  VERSION 0.1.1
   DESCRIPTION "Binary to circuit lifter tool benchmarks"
   HOMEPAGE_URL "https://github.com/trailofbits/circuitous-benchmark.git"
 )
@@ -56,4 +56,4 @@ find_package( circuitous CONFIG REQUIRED )
 #
 # benchmarking tool
 #
-add_subdirectory(bench)
+add_subdirectory( bench )
