@@ -6,6 +6,7 @@
 
 #include "instance.hpp"
 #include "options.hpp"
+#include "common.hpp"
 
 #include <circuitous/Lifter/CircuitSmithy.hpp>
 #include <circuitous/Lifter/Context.hpp>

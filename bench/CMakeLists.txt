@@ -1,6 +1,8 @@
 add_executable( circ-bench
     driver.cpp
+    lifter.cpp
     simple.cpp
+    stats.cpp
 )
 
 target_link_libraries( circ-bench
@@ -16,4 +18,3 @@ target_link_libraries( circ-bench
         benchmark::benchmark
         benchmark::benchmark_main
 )
-
