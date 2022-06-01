@@ -4,6 +4,7 @@
 
 #include "lifter.hpp"
 #include "options.hpp"
+#include "stats.hpp"
 
 #include <benchmark/benchmark.h>
 
@@ -19,13 +20,23 @@ namespace circ::bench
 
     template< typename... args_t >
     void lift_bench(state_t& state, args_t&&... args) {
-        int nodes    = 0;
+        std::vector counters = {
+            operation_counter_t{ node_kind_t::kMul },
+            operation_counter_t{ node_kind_t::kAdd },
+            operation_counter_t{ node_kind_t::kOperation }
+        };
+
         auto [bytes] = std::make_tuple(std::move(args)...);
         for (auto _ : state) {
             auto ci = make_circuit({ bytes }, options);
-            nodes += 1;
+            for (auto &counter : counters) {
+                counter.count(ci);
+            }
         }
-        state.counters["nodes"] = counter_t(nodes, average);
+
+        for (const auto &counter : counters) {
+            state.counters[counter.name()] = counter_t(counter.get(), average);
+        }
     }
 
     BENCHMARK_CAPTURE(lift_bench, "AND_AL_IMMb", "24c3");
