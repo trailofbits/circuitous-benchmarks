@@ -9,6 +9,7 @@
 #include <circuitous/IR/Circuit.hpp>
 #include <circuitous/IR/Cost.hpp>
 #include <string>
+#include <unordered_map>
 
 namespace circ::bench
 {
@@ -38,6 +39,34 @@ namespace circ::bench
       private:
         std::size_t _count = 0;
         node_kind_t _kind;
+    };
+
+    enum class verilog_kind
+    {
+        and_cell,
+        not_cell,
+        xor_cell
+    };
+
+    struct verilog_cell_counter_t {
+        std::size_t count(const circuit_ptr &circuit) {
+            // return _count += count_nodes(circuit, _kind);
+            return 0;
+        }
+
+        std::size_t get() const {
+            std::size_t cell_count = 0;
+            for (auto [_, c] : _counts) {
+                cell_count += c;
+            }
+
+            return cell_count;
+        }
+
+        std::size_t get(verilog_kind cell) const { return _counts.at(cell); }
+
+      private:
+        std::unordered_map< verilog_kind, std::size_t > _counts;
     };
 
 } // namespace circ::bench
