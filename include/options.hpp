@@ -40,4 +40,5 @@ namespace circ::bench
         os_t os;
         arch_t arch;
     };
+
 } // namespace circ::bench

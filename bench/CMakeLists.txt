@@ -2,6 +2,7 @@ add_executable( circ-bench
     driver.cpp
     lifter.cpp
     simple.cpp
+    from_source.cpp
     stats.cpp
 )
 
