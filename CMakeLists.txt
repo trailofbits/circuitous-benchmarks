@@ -52,9 +52,12 @@ include( static_analyzers )
 #
 find_package( benchmark CONFIG REQUIRED )
 find_package( circuitous CONFIG REQUIRED )
-find_package(fmt CONFIG REQUIRED)
+find_package( fmt CONFIG REQUIRED )
 
 #
 # benchmarking tool
 #
 add_subdirectory( bench )
+
+configure_file( scripts/bench-min.sh.in bench-min.sh @ONLY )
+configure_file( scripts/yosys.pl scripts/yosys.pl @ONLY )

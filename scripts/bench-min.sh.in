@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo $(pwd)
+
+@PROJECT_BINARY_DIR@/bench/circ-bench --benchmark_counters_tabular=true --benchmark_filter="min"
