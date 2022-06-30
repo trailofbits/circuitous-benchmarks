@@ -11,24 +11,22 @@
 
 namespace circ::bench
 {
-    static constexpr auto options = options_t{ os_t::macos, arch_t::x86 };
-
     template< typename input_t >
     void lift(state_t& state, input_t&& input) {
         std::vector counters = {
             operation_counter_t{ node_kind_t::kMul },
             operation_counter_t{ node_kind_t::kAdd },
-            operation_counter_t{ node_kind_t::kUDiv },
-            operation_counter_t{ node_kind_t::kSDiv },
-            operation_counter_t{ node_kind_t::kURem },
-            operation_counter_t{ node_kind_t::kSRem },
+            // operation_counter_t{ node_kind_t::kUDiv },
+            // operation_counter_t{ node_kind_t::kSDiv },
+            // operation_counter_t{ node_kind_t::kURem },
+            // operation_counter_t{ node_kind_t::kSRem },
             operation_counter_t{ node_kind_t::kOperation }
         };
 
         verilog_cell_counter_t verilog_counter;
 
         for (auto _ : state) {
-            auto ci = make_circuit(input, options);
+            auto ci = make_circuit(input);
             for (auto &counter : counters) {
                 counter.count(ci);
             }
