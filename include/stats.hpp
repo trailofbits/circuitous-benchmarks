@@ -5,11 +5,12 @@
 #pragma once
 
 #include "common.hpp"
+#include "yosys.hpp"
+#include "verilog.hpp"
 
 #include <circuitous/IR/Circuit.hpp>
 #include <circuitous/IR/Cost.hpp>
 #include <string>
-#include <unordered_map>
 
 namespace circ::bench
 {
@@ -22,10 +23,10 @@ namespace circ::bench
         explicit operation_counter_t(node_kind_t kind)
             : _kind(kind) {}
 
-        std::size_t count(const circuit_ptr &circuit) {
+        void count(const circuit_ptr &circuit) {
             if (_kind == node_kind_t::kOperation)
-                return _count += count_nodes(circuit);
-            return _count += count_nodes(circuit, _kind);
+                _count += count_nodes(circuit);
+            _count += count_nodes(circuit, _kind);
         }
 
         std::string name() const {
@@ -41,17 +42,11 @@ namespace circ::bench
         node_kind_t _kind;
     };
 
-    enum class verilog_kind
-    {
-        and_cell,
-        not_cell,
-        xor_cell
-    };
-
     struct verilog_cell_counter_t {
-        std::size_t count(const circuit_ptr &circuit) {
-            // return _count += count_nodes(circuit, _kind);
-            return 0;
+        void count(const circuit_ptr &circuit) {
+            for (const auto &[k, v] : yosys::run(circuit)) {
+                _counts[k] += v;
+            }
         }
 
         std::size_t get() const {
@@ -63,10 +58,10 @@ namespace circ::bench
             return cell_count;
         }
 
-        std::size_t get(verilog_kind cell) const { return _counts.at(cell); }
+        std::size_t get(verilog::cell_kind cell) const { return _counts.at(cell); }
 
       private:
-        std::unordered_map< verilog_kind, std::size_t > _counts;
+        verilog::cells_count_t _counts;
     };
 
 } // namespace circ::bench

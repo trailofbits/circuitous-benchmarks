@@ -3,10 +3,12 @@
     "version-string": "latest",
     "dependencies": [
       "benchmark",
+      "fmt",
       "gap",
       "glog",
       "spdlog",
       "xed",
-      "llvm-14"
+      "llvm-14",
+      "remill"
     ]
   }
