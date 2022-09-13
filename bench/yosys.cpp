@@ -10,11 +10,6 @@
 #include <fmt/core.h>
 #include <circuitous/Printers/Verilog.hpp>
 
-namespace circ
-{
-    void print_verilog(std::ostream &os, const std::string &name, Circuit *circuit);
-} // namespace circ
-
 namespace circ::bench::yosys
 {
     struct command_result_t {
@@ -82,7 +77,7 @@ namespace circ::bench::yosys
         auto name    = "circuit";
 
         std::ofstream file(verilog);
-        print_verilog(file, name, circuit.get());
+        circ::print::verilog::print(file, name, circuit.get());
         verilog::cells_count_t count = {
             {verilog::cell_kind::and_cell, 0},
             {verilog::cell_kind::not_cell, 0},
