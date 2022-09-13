@@ -14,6 +14,8 @@ DEFINE_string(patterns, "", "Path to the equality saturation patterns.");
 DEFINE_string(arch, "x86", "");
 DEFINE_string(os, "macos", "");
 
+DEFINE_string(mwa, "", "Merge Advice Nodes Preprocessing.");
+
 int main(int argc, char** argv) {
     benchmark::Initialize(&argc, argv);
 
@@ -27,6 +29,10 @@ int main(int argc, char** argv) {
 
     if (!FLAGS_patterns.empty()) {
         opts.eqsat = circ::bench::eqsat_options_t{FLAGS_patterns};
+    }
+
+    if (!FLAGS_mwa.empty()) {
+        opts.mwa = circ::bench::mwa_from_string(FLAGS_mwa);
     }
 
     benchmark::RunSpecifiedBenchmarks();
