@@ -16,10 +16,15 @@ namespace circ::bench
         std::vector counters = {
             operation_counter_t{ node_kind_t::kMul },
             operation_counter_t{ node_kind_t::kAdd },
-            // operation_counter_t{ node_kind_t::kUDiv },
-            // operation_counter_t{ node_kind_t::kSDiv },
-            // operation_counter_t{ node_kind_t::kURem },
-            // operation_counter_t{ node_kind_t::kSRem },
+            operation_counter_t{ node_kind_t::kSub },
+            operation_counter_t{ node_kind_t::kUDiv },
+            operation_counter_t{ node_kind_t::kSDiv },
+            operation_counter_t{ node_kind_t::kURem },
+            operation_counter_t{ node_kind_t::kSRem },
+            operation_counter_t{ node_kind_t::kLShr },
+            operation_counter_t{ node_kind_t::kAShr },
+            operation_counter_t{ node_kind_t::kShl },
+            operation_counter_t{ node_kind_t::kPopulationCount },
             operation_counter_t{ node_kind_t::kOperation }
         };
 
