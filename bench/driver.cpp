@@ -16,6 +16,8 @@
 
 #include "options.hpp"
 
+DEFINE_bool(verbose, false, "Enable verbose circuitous.");
+
 DEFINE_string(patterns, "", "Path to the equality saturation patterns.");
 
 DEFINE_string(arch, "x86", "");
@@ -55,12 +57,14 @@ int main(int argc, char** argv) {
 
     opts.conjure_alu = FLAGS_conjure_alu;
 
-    circ::add_sink< circ::severity::kill >(std::cerr);
-    circ::add_sink< circ::severity::error >(std::cerr);
-    circ::add_sink< circ::severity::warn >(std::cerr);
-    circ::add_sink< circ::severity::info >(std::cout);
-    circ::add_sink< circ::severity::trace >(std::cout);
-    circ::add_sink< circ::severity::dbg >(std::cout);
+    if (FLAGS_verbose) {
+        circ::add_sink< circ::severity::kill >(std::cerr);
+        circ::add_sink< circ::severity::error >(std::cerr);
+        circ::add_sink< circ::severity::warn >(std::cerr);
+        circ::add_sink< circ::severity::info >(std::cout);
+        circ::add_sink< circ::severity::trace >(std::cout);
+        circ::add_sink< circ::severity::dbg >(std::cout);
+    }
 
     spdlog::info("[bench] arch: {}", to_string(opts.arch));
     spdlog::info("[bench] os: {}", to_string(opts.os));
