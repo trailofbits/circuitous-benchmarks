@@ -41,7 +41,7 @@ namespace circ::bench::yosys
                 }
             } catch (std::exception &e) {
                 pclose(pipe);
-                throw e;
+                throw;
             }
 
             auto close = pclose(pipe);
@@ -72,19 +72,23 @@ namespace circ::bench::yosys
         return nums;
     }
 
-    verilog::cells_count_t run(const circuit_ptr &circuit) {
+    verilog::cells_count_t run(const circuit_owner_t &circuit) {
         auto verilog = "benchmark.tmp.v";
         auto name    = "circuit";
 
         std::ofstream file(verilog);
         circ::print::verilog::print(file, name, circuit.get());
+        return run(verilog_file_t{ verilog });
+    }
+
+    verilog::cells_count_t run(const verilog_file_t &file) {
         verilog::cells_count_t count = {
             {verilog::cell_kind::and_cell, 0},
             {verilog::cell_kind::not_cell, 0},
             {verilog::cell_kind::xor_cell, 0}
         };
 
-        std::string cmd = fmt::format("perl ./scripts/yosys.pl {} {}", verilog, name);
+        std::string cmd = fmt::format("perl ./scripts/yosys.pl {} {}", file.path.string(), "circuit");
         auto result = command::exec(cmd);
 
         auto nums = stats(result.output);

@@ -6,9 +6,9 @@
 
 namespace circ::bench
 {
-    std::size_t count_nodes(const circuit_ptr &circuit) {
+    std::size_t count_nodes(const circuit_owner_t &circuit) {
         nodes_counter_t counter;
-        counter.Run(circuit.get());
+        counter.Run(circuit->root);
 
         std::size_t count = 0;
         for (const auto &[_, c] : counter.nodes)
@@ -16,9 +16,9 @@ namespace circ::bench
         return count;
     }
 
-    std::size_t count_nodes(const circuit_ptr &circuit, node_kind_t kind) {
+    std::size_t count_nodes(const circuit_owner_t &circuit, node_kind_t kind) {
         nodes_counter_t counter;
-        counter.Run(circuit.get());
+        counter.Run(circuit->root);
         return counter.total_count(kind);
     }
 

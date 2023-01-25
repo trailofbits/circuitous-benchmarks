@@ -51,27 +51,6 @@ namespace circ::bench
         throw std::runtime_error("unknown architecture");
     }
 
-    enum class mwa_t {
-        basic,
-        all,
-        propagate
-    };
-
-    static inline std::string to_string(mwa_t mwa) {
-        switch (mwa) {
-            case mwa_t::basic: return "basic";
-            case mwa_t::all: return "all";
-            case mwa_t::propagate: return "propagate";
-        }
-    }
-
-    static inline mwa_t mwa_from_string(std::string_view str) {
-        if (str == "basic") return mwa_t::basic;
-        if (str == "all") return mwa_t::all;
-        if (str == "propagate") return mwa_t::propagate;
-        throw std::runtime_error("unknown mwa");
-    }
-
     struct eqsat_options_t {
         std::filesystem::path patterns;
     };
@@ -80,7 +59,12 @@ namespace circ::bench
         os_t os;
         arch_t arch;
         std::optional< eqsat_options_t > eqsat;
-        std::optional< mwa_t > mwa;
+
+        bool overflow_flag_mix = false;
+        bool merge_advices     = false;
+        bool collapse_ops      = false;
+
+        bool conjure_alu = false;
     };
 
     extern options_t options;

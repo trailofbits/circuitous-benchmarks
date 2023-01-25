@@ -13,6 +13,13 @@ namespace circ::bench
     }
 
     BENCHMARK_CAPTURE(lift_source, "min:small", "./data/small.ciff");
+
+    BENCHMARK_CAPTURE(lift_source, "min:adds", "./data/adds.ciff");
+    // // BENCHMARK_CAPTURE(lift_source, "min:muls", "./data/muls.ciff");
+    // BENCHMARK_CAPTURE(lift_source, "min:divs", "./data/divs.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:subs", "./data/subs.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:xors", "./data/xors.ciff");
+
     BENCHMARK_CAPTURE(lift_source, "big:3d_image_toolkit", "./data/3d_image_toolkit.ciff");
     BENCHMARK_CAPTURE(lift_source, "big:router_simulator", "./data/router_simulator.ciff");
     BENCHMARK_CAPTURE(lift_source, "big:lan_simulator",    "./data/lan_simulator.ciff");
