@@ -53,6 +53,7 @@ include( static_analyzers )
 find_package( benchmark CONFIG REQUIRED )
 find_package( circuitous CONFIG REQUIRED )
 find_package( fmt CONFIG REQUIRED )
+find_package( spdlog CONFIG REQUIRED )
 
 #
 # benchmarking tool
