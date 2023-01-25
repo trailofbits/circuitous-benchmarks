@@ -12,7 +12,7 @@
 namespace circ::bench
 {
     struct instance_t {
-        std::string_view bytes;
+        std::vector< std::uint8_t > bytes;
     };
 
     struct ciff_file_t {

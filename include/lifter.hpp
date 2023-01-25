@@ -15,6 +15,8 @@
 #include <circuitous/Transforms/PassBase.hpp>
 #include <utility>
 
+#include <spdlog/spdlog.h>
+
 namespace circ::bench
 {
     using smithy      = circ::CircuitSmithy;
@@ -29,8 +31,13 @@ namespace circ::bench
         }
     } // namespace detail
 
-    static inline circuit_owner_t make_circuit(instance_t instance) {
-        return detail::make_circuit(instance.bytes);
+    static inline std::string_view as_string_view(const std::vector< uint8_t > &buf)
+    {
+        return std::string_view( reinterpret_cast<const char *>(buf.data()), buf.size());
+    }
+
+    static inline circuit_owner_t make_circuit(const instance_t &instance) {
+        return detail::make_circuit(as_string_view(instance.bytes));
     }
 
     static inline circuit_owner_t make_circuit(ciff_file_t ciff_file) {
