@@ -1,0 +1,39 @@
+vcpkg_from_github(
+  OUT_SOURCE_PATH SOURCE_PATH
+  REPO lifting-bits/gap
+  REF b442b85287f3521c491787cef09560b928a0f8c9
+  SHA512 c2afb4e4165e291deb21e2848b2197eedd833ec7a2d8351ca54bbfc9e4e07f9d5f176d67a00515abc67d65e3ccd329e5a44757167aabfba7576e3e414641c371
+  HEAD_REF main
+)
+
+vcpkg_cmake_configure(
+  SOURCE_PATH "${SOURCE_PATH}"
+  OPTIONS
+    -DGAP_ENABLE_COROUTINES=ON
+    -DGAP_ENABLE_TESTING=OFF
+    -DGAP_ENABLE_EXAMPLES=OFF
+    -DGAP_INSTALL=ON
+    -DUSE_SYSTEM_DEPENDENCIES=ON
+)
+
+vcpkg_cmake_install()
+vcpkg_cmake_config_fixup(
+  PACKAGE_NAME "gap"
+  CONFIG_PATH lib/cmake/gap
+)
+
+file( REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/debug" )
+
+# we do not populate lib folder yet
+file( REMOVE_RECURSE "${CURRENT_PACKAGES_DIR}/lib" )
+
+file(
+  INSTALL "${SOURCE_PATH}/LICENSE"
+  DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}"
+  RENAME copyright
+)
+
+file(
+  INSTALL "${CMAKE_CURRENT_LIST_DIR}/usage"
+  DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}"
+)
