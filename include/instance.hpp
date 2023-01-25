@@ -18,4 +18,8 @@ namespace circ::bench
     struct ciff_file_t {
         std::filesystem::path path;
     };
+
+    struct verilog_file_t {
+        std::filesystem::path path;
+    };
 } // namespace circ::bench

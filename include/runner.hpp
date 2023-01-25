@@ -48,4 +48,18 @@ namespace circ::bench
         state.counters["VERILOG:XOR"] = counter_t(verilog_counter.get(verilog::cell_kind::xor_cell), average);
     }
 
+    template< typename input_t >
+    void run_on_verilog(state_t& state, input_t&& input) {
+        verilog_cell_counter_t verilog_counter;
+
+        for (auto _ : state) {
+            verilog_counter.count(input);
+        }
+
+        state.counters["VERILOG:CELLS"] = counter_t(verilog_counter.get(), average);
+        state.counters["VERILOG:AND"] = counter_t(verilog_counter.get(verilog::cell_kind::and_cell), average);
+        state.counters["VERILOG:NOT"] = counter_t(verilog_counter.get(verilog::cell_kind::not_cell), average);
+        state.counters["VERILOG:XOR"] = counter_t(verilog_counter.get(verilog::cell_kind::xor_cell), average);
+    }
+
 } // namespace circ::bench
