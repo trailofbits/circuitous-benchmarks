@@ -16,14 +16,14 @@ namespace circ::bench
 {
     using nodes_counter_t = circ::RawNodesCounter;
 
-    std::size_t count_nodes(const circuit_ptr &circuit);
-    std::size_t count_nodes(const circuit_ptr &circuit, node_kind_t kind);
+    std::size_t count_nodes(const circuit_owner_t &circuit);
+    std::size_t count_nodes(const circuit_owner_t &circuit, node_kind_t kind);
 
     struct operation_counter_t {
         explicit operation_counter_t(node_kind_t kind)
             : _kind(kind) {}
 
-        void count(const circuit_ptr &circuit) {
+        void count(const circuit_owner_t &circuit) {
             if (_kind == node_kind_t::kOperation)
                 _count += count_nodes(circuit);
             _count += count_nodes(circuit, _kind);
@@ -43,8 +43,14 @@ namespace circ::bench
     };
 
     struct verilog_cell_counter_t {
-        void count(const circuit_ptr &circuit) {
+        void count(const circuit_owner_t &circuit) {
             for (const auto &[k, v] : yosys::run(circuit)) {
+                _counts[k] += v;
+            }
+        }
+
+        void count(const verilog_file_t &file) {
+            for (const auto &[k, v] : yosys::run(file)) {
                 _counts[k] += v;
             }
         }

@@ -2,4 +2,4 @@
 
 echo $(pwd)
 
-@PROJECT_BINARY_DIR@/bench/circ-bench --benchmark_counters_tabular=true --benchmark_filter="min"
+@PROJECT_BINARY_DIR@/bench/circ-bench --benchmark_counters_tabular=true --benchmark_filter="min" --benchmark_time_unit=s

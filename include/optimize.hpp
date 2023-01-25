@@ -8,5 +8,5 @@
 
 namespace circ::bench
 {
-    circuit_ptr optimize(circuit_ptr circ);
+    circuit_owner_t optimize(circuit_owner_t circ);
 } // namespace circ::bench

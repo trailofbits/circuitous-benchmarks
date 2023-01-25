@@ -59,6 +59,12 @@ namespace circ::bench
         os_t os;
         arch_t arch;
         std::optional< eqsat_options_t > eqsat;
+
+        bool overflow_flag_mix = false;
+        bool merge_advices     = false;
+        bool collapse_ops      = false;
+
+        bool conjure_alu = false;
     };
 
     extern options_t options;

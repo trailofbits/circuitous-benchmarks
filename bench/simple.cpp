@@ -21,10 +21,31 @@ namespace circ::bench
     BENCHMARK_CAPTURE(lift_bytes, "min:MOVSB", "a4");
     BENCHMARK_CAPTURE(lift_bytes, "min:MOV_GPR8_GPR8_8A", "8ad0");
 
-    // // multiplication by zero
+    // BENCHMARK_CAPTURE(lift_bytes, "min:OR_GPRv_IMMz_32", "81c9000c0000");
+    // BENCHMARK_CAPTURE(lift_bytes, "min:POPAD_32", "61");
+
+    BENCHMARK_CAPTURE(lift_bytes, "min:PUSH_IMMz_32", "68ddffff50");
+    BENCHMARK_CAPTURE(lift_bytes, "min:PUSH_MEMv_32", "ff31");
+    BENCHMARK_CAPTURE(lift_bytes, "min:SUB_AL_IMMb", "2c01");
+
+    // BENCHMARK_CAPTURE(lift_bytes, "min:SUB_GPRv_MEMv_32", "2b048dc4150508");
+    BENCHMARK_CAPTURE(lift_bytes, "min:XOR_GPR8_GPR8_32", "32ff");
+    // BENCHMARK_CAPTURE(lift_bytes, "min:XOR_GPRv_IMMz_32", "81f3ffff0fb7");
+    BENCHMARK_CAPTURE(lift_bytes, "min:XOR_OrAX_IMMz_32", "35fbffff8b");
+    // BENCHMARK_CAPTURE(lift_bytes, "min:DIV_GPRv_32", "f7f3");
+    // BENCHMARK_CAPTURE(lift_bytes, "min:DIV_MEMv_32", "f775f4");
+    BENCHMARK_CAPTURE(lift_bytes, "min:AND_MEMb_GPR8", "205e5f");
+    BENCHMARK_CAPTURE(lift_bytes, "min:ADD_GPR8_GPR8_02", "02ef");
+    // BENCHMARK_CAPTURE(lift_bytes, "min:ADD_MEMb_GPR8", "260083ec0c6a02");
+    // BENCHMARK_CAPTURE(lift_bytes, "min:IMUL_GPRv_MEMv_IMMz_16", "66691c610f85");
+    // BENCHMARK_CAPTURE(lift_bytes, "min:IMUL_GPRv_MEMv_IMMz_32", "699ce7ff31c08b8d98feff");
+    BENCHMARK_CAPTURE(lift_bytes, "min:IMUL_MEMb", "f62ccdff83f800");
+    // BENCHMARK_CAPTURE(lift_bytes, "min:MOV_MEMv_GPRv_16", "6766895424");
+
+    // multiplication by zero
     BENCHMARK_CAPTURE(lift_bytes, "min:MOV_RAX_RAX", "488b00");
 
-    // // and with one child
+    // and with one child
     BENCHMARK_CAPTURE(lift_bytes, "min:AND_ONE_CHILD_1", "90");
     BENCHMARK_CAPTURE(lift_bytes, "min:AND_ONE_CHILD_2", "488b90");
 
