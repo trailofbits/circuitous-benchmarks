@@ -30,6 +30,8 @@ DEFINE_bool(merge_advices, false, "Enable merge advices optimization.");
 DEFINE_bool(collapse_ops, false, "Enable colapse ops optimization.");
 
 DEFINE_bool(conjure_alu, false, "Enable conjure ALU optimization.");
+DEFINE_bool(switch_as_mux, false, "Enable verilog to emit switches as muxes.");
+
 
 int main(int argc, char** argv) {
     benchmark::Initialize(&argc, argv);
@@ -54,6 +56,8 @@ int main(int argc, char** argv) {
     opts.overflow_flag_mix = FLAGS_overflow_flag_mix || FLAGS_simplify;
     opts.merge_advices = FLAGS_merge_advices || FLAGS_simplify;
     opts.collapse_ops = FLAGS_collapse_ops || FLAGS_simplify;
+
+    opts.switch_as_mux = FLAGS_switch_as_mux;
 
     opts.conjure_alu = FLAGS_conjure_alu;
 
@@ -86,6 +90,10 @@ int main(int argc, char** argv) {
 
     if (opts.conjure_alu) {
         spdlog::info("[bench] using conjure ALU optimization");
+    }
+
+    if (opts.switch_as_mux) {
+        spdlog::info("[bench] emiting switch as mux");
     }
 
     benchmark::RunSpecifiedBenchmarks();

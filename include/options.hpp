@@ -64,7 +64,9 @@ namespace circ::bench
         bool merge_advices     = false;
         bool collapse_ops      = false;
 
-        bool conjure_alu = false;
+        bool conjure_alu       = false;
+
+        bool switch_as_mux     = false;
     };
 
     extern options_t options;
