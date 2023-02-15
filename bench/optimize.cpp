@@ -29,23 +29,27 @@ namespace circ::bench
             opt.template emplace_pass< circ::CollapseOpsPass >( "collapse-ops" );
         }
 
-        if (options.conjure_alu) {
+        if (options.conjure_alu_add) {
             std::vector< circ::Operation::kind_t > kinds = {
-                circ::Mul::kind,
                 circ::Add::kind,
                 circ::Sub::kind,
-
-                circ::UDiv::kind,
-                circ::SDiv::kind,
-
-                circ::URem::kind,
-                circ::SRem::kind,
-
                 circ::PopulationCount::kind,
                 circ::Select::kind,
             };
 
-            opt.template emplace_pass< circ::ConjureALUPass >( "conjure-alu", kinds );
+            opt.template emplace_pass< circ::ConjureALUPass >( "conjure-alu-add", kinds );
+        }
+
+        if (options.conjure_alu_mul) {
+            std::vector< circ::Operation::kind_t > kinds = {
+                circ::Mul::kind,
+                circ::UDiv::kind,
+                circ::SDiv::kind,
+                circ::URem::kind,
+                circ::SRem::kind,
+            };
+
+            opt.template emplace_pass< circ::ConjureALUPass >( "conjure-alu-mul", kinds );
         }
 
 

@@ -15,8 +15,10 @@ namespace circ::bench
     BENCHMARK_CAPTURE(lift_source, "min:small", "./data/small.ciff");
 
     BENCHMARK_CAPTURE(lift_source, "min:adds", "./data/adds.ciff");
-    // // BENCHMARK_CAPTURE(lift_source, "min:muls", "./data/muls.ciff");
-    // BENCHMARK_CAPTURE(lift_source, "min:divs", "./data/divs.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:mul-16", "./data/mul-16.ciff");
+    BENCHMARK_CAPTURE(lift_source, "big:muls", "./data/muls.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:idivs", "./data/idivs.ciff");
+    BENCHMARK_CAPTURE(lift_source, "big:divs", "./data/divs.ciff");
     BENCHMARK_CAPTURE(lift_source, "min:subs", "./data/subs.ciff");
     BENCHMARK_CAPTURE(lift_source, "min:xors", "./data/xors.ciff");
 
