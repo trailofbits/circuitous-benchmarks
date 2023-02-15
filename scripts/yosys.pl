@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# Copyright (c) 2022 Trail of Bits, Inc.
+# Copyright (c) 2022-2023 Trail of Bits, Inc.
 
 use strict;
 use warnings;
@@ -11,48 +11,12 @@ sub  trim { my $s = shift; $s =~ s/^\s+|\s+$//g; return $s };
 
 my $dir = tempdir( CLEANUP => 1 );
 
-my $lib = <<EOF;
-library(demo) {
-    cell(NOT) {
-        area: 2;
-        pin(IN) { direction: input; }
-        pin(OUT) { direction: output; function: "IN'"; }
-    }
-    cell(XOR) {
-        area: 1;
-        pin(A) { direction: input; }
-        pin(B) { direction: input; }
-        pin(OUT) { direction: output; function: "(A^B)"; }
-    }
-    cell(AND) {
-        area: 100;
-        preferred: false;
-        pin(A) { direction: input; }
-        pin(B) { direction: input; }
-        pin(OUT) { direction: output; function: "(A&B)"; }
-    }
-    cell(BUF) {
-        area: 1;
-        pin(IN) { direction: input; }
-        pin(OUT) { direction: output; function: "IN"; }
-    }
-}
-EOF
-
-my $libfile = "$dir/library.lib";
-open(LIB, '>', $libfile) or die $!;
-print LIB $lib;
-close(LIB);
-
 my $script = <<EOF;
 read_verilog $ARGV[0];
 hierarchy -check -top $ARGV[1];
 proc; opt; memory; opt; fsm; opt; techmap; opt;
 flatten; opt -purge;
-abc -liberty $libfile;
-opt;
-read_liberty -lib $libfile;
-write_verilog netlist_$ARGV[1]_$ARGV[0];
+write_blif $ARGV[1]_$ARGV[0].blif;
 stat;
 EOF
 
@@ -64,21 +28,32 @@ close(SCRIPT);
 my $out = `yosys $scriptfile`;
 
 my $and = 0;
+my $mux = 0;
 my $not = 0;
+my $or  = 0;
 my $xor = 0;
+
 foreach (split(/\n/, $out)) {
     my $line = trim($_);
-    if($line =~ /AND\s+(\d+)/ ) {
+    if ($line =~ /_AND_\s+(\d+)/ ) {
         $and += $1;
     }
 
-    if($line =~ /NOT\s+(\d+)/ ) {
+    if ($line =~ /_MUX_\s+(\d+)/ ) {
+        $mux += $1;
+    }
+
+    if ($line =~ /_NOT_\s+(\d+)/ ) {
         $not += $1;
     }
 
-    if($line =~ /XOR\s+(\d+)/ ) {
+    if ($line =~ /_OR_\s+(\d+)/ ) {
+        $or += $1;
+    }
+
+    if ($line =~ /_XOR_\s+(\d+)/ ) {
         $xor += $1;
     }
 }
 
-print "$and:$not:$xor\n";
+print "$and:$mux:$not:$or:$xor\n";

@@ -70,4 +70,6 @@ namespace circ::bench
         verilog::cells_count_t _counts;
     };
 
+    void update_varilog_counters(state_t &state, const verilog_cell_counter_t &counter);
+
 } // namespace circ::bench
