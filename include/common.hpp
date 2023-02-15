@@ -20,6 +20,6 @@ namespace circ::bench
 
     using counter_t = benchmark::Counter;
 
-    constexpr auto average = counter_t::kAvgThreads;
+    constexpr auto average = counter_t::kAvgIterations;
 
 } // namespace circ::bench
