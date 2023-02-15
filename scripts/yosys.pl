@@ -16,7 +16,7 @@ read_verilog $ARGV[0];
 hierarchy -check -top $ARGV[1];
 proc; opt; memory; opt; fsm; opt; techmap; opt;
 flatten; opt -purge;
-write_blif $ARGV[1]_$ARGV[0].blif;
+write_blif $ARGV[0].blif;
 stat;
 EOF
 

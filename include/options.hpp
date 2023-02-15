@@ -60,6 +60,9 @@ namespace circ::bench
         arch_t arch;
         std::optional< eqsat_options_t > eqsat;
 
+        std::filesystem::path directory;
+        bool keep_files        = false;
+
         bool overflow_flag_mix = false;
         bool merge_advices     = false;
         bool collapse_ops      = false;

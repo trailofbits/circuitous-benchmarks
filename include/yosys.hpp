@@ -13,7 +13,7 @@
 
 namespace circ::bench::yosys
 {
-    verilog::cells_count_t run(const circuit_owner_t &circuit);
+    verilog::cells_count_t run(std::filesystem::path wd, const circuit_owner_t &circuit);
 
     verilog::cells_count_t run(const verilog_file_t &file);
 } // namespace circ::bench::yosys
