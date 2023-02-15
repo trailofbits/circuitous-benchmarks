@@ -10,6 +10,8 @@
 #include <circuitous/Lifter/LLVMToCircIR.hpp>
 #include <circuitous/Lifter/BaseLifter.hpp>
 
+#include <eqsat/pattern/parser.hpp>
+
 namespace circ::bench
 {
     using DefaultOptimizer = Passes< Defensive< PassesBase > >;
@@ -52,6 +54,10 @@ namespace circ::bench
             opt.template emplace_pass< circ::ConjureALUPass >( "conjure-alu-mul", kinds );
         }
 
+        if (options.eqsat) {
+            auto pass = opt.template emplace_pass< circ::EqualitySaturationPass >("eqsat");
+            pass->add_rules( eqsat::parse_rules(options.eqsat->patterns.string()) );
+        }
 
         return opt.run(std::move(circuit));
     }
