@@ -33,7 +33,7 @@ namespace circ::bench
 
     static inline std::string_view as_string_view(const std::vector< uint8_t > &buf)
     {
-        return std::string_view( reinterpret_cast<const char *>(buf.data()), buf.size());
+        return std::string_view(reinterpret_cast<const char *>(buf.data()), buf.size());
     }
 
     static inline circuit_owner_t make_circuit(const instance_t &instance) {
