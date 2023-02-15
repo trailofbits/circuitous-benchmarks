@@ -1,0 +1,243 @@
+circ-bench(6613,0x7ff85b10e8c0) malloc: nano zone abandoned due to inability to preallocate reserved vm space.
+[2023-01-25 12:55:21.633] [info] [bench] arch: x86
+[2023-01-25 12:55:21.634] [info] [bench] os: macos
+2023-01-25T12:55:21+01:00
+Running ./builds/cxx-common-custom/bench/circ-bench
+Run on (8 X 2300 MHz CPU s)
+CPU Caches:
+  L1 Data 48 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 512 KiB (x4)
+  L3 Unified 8192 KiB (x1)
+Load Average: 11.18, 7.68, 5.49
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Benchmark                                  Time             CPU   Iterations       AShr        Add       LShr        Mul      Nodes       SDiv       SRem        Shl        Sub       UDiv       URem V:AND V:CELLS V:NOT V:XOR  pop_count
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lift_bytes/"min:AND_AL_IMMb"      3671729082 ns    418186000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.338k        6.696k       2.92k         438          1
+lift_bytes/"min:LEA_GPRv_AGEN_32" 6326918913 ns    607656000 ns            1          0         17          6          0        262          0          0          1          1          0          0      3.829k        7.907k      2.939k      1.139k          2
+lift_bytes/"min:LODSB"            3585382097 ns    364682000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.401k        6.765k      2.945k         419          1
+lift_bytes/"min:LODSB"            4751903337 ns    292272000 ns            1          0         15          0          0        127          0          0          0          0          0          0      3.808k        7.515k      3.155k         552          0
+lift_bytes/"min:LOOP_RELBRb"      4424074444 ns    302502000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.281k        6.579k      2.881k         417          1
+lift_bytes/"min:MOVSB"            6599223625 ns    345444000 ns            1          0         15          0          0        127          0          0          0          0          0          0      4.072k        7.935k      3.404k         459          0
+lift_bytes/"min:MOV_GPR8_GPR8_8A" 4487806290 ns    473775000 ns            1          0          6          5          0        170          0          0          1          1          0          0      3.207k        6.421k      2.863k         351          1
+lift_bytes/"min:PUSH_IMMz_32"     4781271233 ns    349035000 ns            1          0          6          5          0        166          0          0          1          1          0          0      3.039k        6.174k      2.698k         437          1
+lift_bytes/"min:PUSH_MEMv_32"     4211551572 ns    357982000 ns            1          0          5          0          0        169          0          0          1          0          0          0      3.149k        6.295k      2.569k         577          1
+lift_bytes/"min:SUB_AL_IMMb"      3436531780 ns    312660000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.154k        6.435k      2.753k         528          1
+lift_bytes/"min:XOR_GPR8_GPR8_32" 3169967439 ns    328562000 ns            1          0          5          0          0        162          0          0          1          0          0          0      3.903k         7.71k      3.208k         599          1
+lift_bytes/"min:XOR_OrAX_IMMz_32" 3926735790 ns    334567000 ns            1          0          5          0          0        151          0          0          1          0          0          0      3.478k        7.021k       2.99k         553          1
+lift_bytes/"min:AND_MEMb_GPR8"    3606108767 ns    307430000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.246k        6.459k      2.759k         454          1
+lift_bytes/"min:ADD_GPR8_GPR8_02" 4672831564 ns    321064000 ns            1          0          8          1          0        161          0          0          1          0          0          0      3.882k        7.594k      3.268k         444          1
+lift_bytes/"min:IMUL_MEMb"        5485917018 ns    404610000 ns            1          0         13          6          0        290          0          0          1          1          0          0      3.987k        8.122k      3.136k         999          2
+lift_bytes/"min:MOV_RAX_RAX"      3555343817 ns    360949000 ns            1          0          7          5          0        210          0          0          1          1          0          0       2.59k        5.393k      2.173k         630          2
+lift_bytes/"min:AND_ONE_CHILD_1"  3852790096 ns    326683000 ns            1          0          6          4          0        149          0          0          1          1          0          0      3.755k        7.405k      3.234k         416          1
+lift_bytes/"min:AND_ONE_CHILD_2"  4294222475 ns    384427000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.423k        5.113k      2.004k         686          2
+lift_source/"min:small"           2887450278 ns    366123000 ns            1          0          5          6          0        226          0          0          0          0          0          0      1.823k        3.926k      1.558k         545          1
+lift_source/"min:adds"            65748494690 ns   3674274000 ns            1          0        282         28          0     1.946k          0          0         20          0          0          0     34.309k       69.464k     23.077k     12.078k          8
+lift_source/"min:subs"            61881455951 ns   3280499000 ns            1          0        269         30          0     1.938k          0          0         21          9          0          0     32.877k       67.169k     22.283k     12.009k          9
+lift_source/"min:xors"            58015364410 ns   3423832000 ns            1          0        253          3          0     1.803k          0          0         15          0          0          0     33.186k       67.584k     22.361k     12.037k          7
+
+---
+
+circ-bench(15607,0x7ff85b10e8c0) malloc: nano zone abandoned due to inability to preallocate reserved vm space.
+[2023-01-25 13:18:51.952] [info] [bench] arch: x86
+[2023-01-25 13:18:51.953] [info] [bench] os: macos
+[2023-01-25 13:18:51.953] [info] [bench] using overflow flag mix optimization
+2023-01-25T13:18:51+01:00
+Running ./builds/cxx-common-custom/bench/circ-bench
+Run on (8 X 2300 MHz CPU s)
+CPU Caches:
+  L1 Data 48 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 512 KiB (x4)
+  L3 Unified 8192 KiB (x1)
+Load Average: 3.08, 3.19, 3.80
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Benchmark                                  Time             CPU   Iterations       AShr        Add       LShr        Mul      Nodes       SDiv       SRem        Shl        Sub       UDiv       URem V:AND V:CELLS V:NOT V:XOR  pop_count
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lift_bytes/"min:AND_AL_IMMb"      3350170502 ns    411826000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.732k      2.949k         424          1
+lift_bytes/"min:LEA_GPRv_AGEN_32" 4494100372 ns    400775000 ns            1          0         17          6          0        262          0          0          1          1          0          0      3.872k            8k      2.989k      1.139k          2
+lift_bytes/"min:LODSB"            3125189391 ns    325214000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.344k        6.725k      2.967k         414          1
+lift_bytes/"min:LODSB"            4275440671 ns    262955000 ns            1          0         15          0          0        127          0          0          0          0          0          0      3.808k        7.515k      3.155k         552          0
+lift_bytes/"min:LOOP_RELBRb"      3400477682 ns    337547000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.281k        6.579k      2.881k         417          1
+lift_bytes/"min:MOVSB"            5911785685 ns    278442000 ns            1          0         15          0          0        127          0          0          0          0          0          0      4.072k        7.935k      3.404k         459          0
+lift_bytes/"min:MOV_GPR8_GPR8_8A" 4764966681 ns    323147000 ns            1          0          6          5          0        170          0          0          1          1          0          0      3.207k        6.421k      2.863k         351          1
+lift_bytes/"min:PUSH_IMMz_32"     3440686048 ns    361344000 ns            1          0          6          5          0        166          0          0          1          1          0          0      3.091k        6.256k      2.742k         423          1
+lift_bytes/"min:PUSH_MEMv_32"     3755399422 ns    300227000 ns            1          0          5          0          0        169          0          0          1          0          0          0      3.179k        6.354k      2.613k         562          1
+lift_bytes/"min:SUB_AL_IMMb"      3870299136 ns    328650000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.735k      2.923k         453          1
+lift_bytes/"min:XOR_GPR8_GPR8_32" 3429273871 ns    396252000 ns            1          0          5          0          0        162          0          0          1          0          0          0      4.105k        8.086k      3.447k         534          1
+lift_bytes/"min:XOR_OrAX_IMMz_32" 3281731303 ns    312841000 ns            1          0          5          0          0        151          0          0          1          0          0          0      3.567k        7.159k      3.067k         525          1
+lift_bytes/"min:AND_MEMb_GPR8"    3236684928 ns    312860000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.048k        6.147k      2.641k         458          1
+lift_bytes/"min:ADD_GPR8_GPR8_02" 3823687900 ns    369350000 ns            1          0          8          1          0        161          0          0          1          0          0          0      3.991k        7.787k      3.373k         423          1
+lift_bytes/"min:IMUL_MEMb"        4842555449 ns    378646000 ns            1          0         13          6          0        290          0          0          1          1          0          0      4.052k        8.257k      3.219k         986          2
+lift_bytes/"min:MOV_RAX_RAX"      4090473073 ns    338599000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.568k        5.355k      2.149k         638          2
+lift_bytes/"min:AND_ONE_CHILD_1"  3749107958 ns    309158000 ns            1          0          6          4          0        149          0          0          1          1          0          0      3.775k         7.43k      3.251k         404          1
+lift_bytes/"min:AND_ONE_CHILD_2"  3386693183 ns    330239000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.601k        5.421k      2.189k         631          2
+lift_source/"min:small"           2669282013 ns    391925000 ns            1          0          5          6          0        226          0          0          0          0          0          0      1.903k          4.1k      1.676k         521          1
+lift_source/"min:adds"            60693742080 ns   3425804000 ns            1          0        282         28          0     1.956k          0          0         20          0          0          0     34.319k       69.438k     23.085k     12.034k          8
+lift_source/"min:subs"            63109047143 ns   2923554000 ns            1          0        269         30          0     1.931k          0          0         21          9          0          0     33.398k       68.305k     22.773k     12.134k          9
+lift_source/"min:xors"            61168898800 ns   3500458000 ns            1          0        253          3          0     1.803k          0          0         15          0          0          0      33.05k       67.457k     22.345k     12.062k          7
+
+---
+
+circ-bench(17964,0x7ff85b10e8c0) malloc: nano zone abandoned due to inability to preallocate reserved vm space.
+[2023-01-25 13:24:45.366] [info] [bench] arch: x86
+[2023-01-25 13:24:45.368] [info] [bench] os: macos
+[2023-01-25 13:24:45.368] [info] [bench] using merge advices optimization
+2023-01-25T13:24:45+01:00
+Running ./builds/cxx-common-custom/bench/circ-bench
+Run on (8 X 2300 MHz CPU s)
+CPU Caches:
+  L1 Data 48 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 512 KiB (x4)
+  L3 Unified 8192 KiB (x1)
+Load Average: 3.45, 3.51, 3.73
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Benchmark                                  Time             CPU   Iterations       AShr        Add       LShr        Mul      Nodes       SDiv       SRem        Shl        Sub       UDiv       URem V:AND V:CELLS V:NOT V:XOR  pop_count
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lift_bytes/"min:AND_AL_IMMb"      3485591364 ns    367894000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.732k      2.949k         424          1
+lift_bytes/"min:LEA_GPRv_AGEN_32" 4949843054 ns    398966000 ns            1          0         17          6          0        262          0          0          1          1          0          0      3.872k            8k      2.989k      1.139k          2
+lift_bytes/"min:LODSB"            3421834864 ns    314035000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.344k        6.725k      2.967k         414          1
+lift_bytes/"min:LODSB"            4365865201 ns    282795000 ns            1          0         15          0          0        127          0          0          0          0          0          0      3.808k        7.515k      3.155k         552          0
+lift_bytes/"min:LOOP_RELBRb"      3871430845 ns    296274000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.281k        6.579k      2.881k         417          1
+lift_bytes/"min:MOVSB"            5629579153 ns    295842000 ns            1          0         15          0          0        127          0          0          0          0          0          0      4.072k        7.935k      3.404k         459          0
+lift_bytes/"min:MOV_GPR8_GPR8_8A" 3358222054 ns    293689000 ns            1          0          6          5          0        170          0          0          1          1          0          0      3.207k        6.421k      2.863k         351          1
+lift_bytes/"min:PUSH_IMMz_32"     3381304998 ns    308244000 ns            1          0          6          5          0        166          0          0          1          1          0          0      3.091k        6.256k      2.742k         423          1
+lift_bytes/"min:PUSH_MEMv_32"     3576060091 ns    298453000 ns            1          0          5          0          0        169          0          0          1          0          0          0      3.179k        6.354k      2.613k         562          1
+lift_bytes/"min:SUB_AL_IMMb"      3741389390 ns    296466000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.735k      2.923k         453          1
+lift_bytes/"min:XOR_GPR8_GPR8_32" 3070057998 ns    304395000 ns            1          0          5          0          0        162          0          0          1          0          0          0      4.105k        8.086k      3.447k         534          1
+lift_bytes/"min:XOR_OrAX_IMMz_32" 3172646446 ns    303850000 ns            1          0          5          0          0        151          0          0          1          0          0          0      3.567k        7.159k      3.067k         525          1
+lift_bytes/"min:AND_MEMb_GPR8"    3238220867 ns    333233000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.048k        6.147k      2.641k         458          1
+lift_bytes/"min:ADD_GPR8_GPR8_02" 3897584947 ns    317678000 ns            1          0          8          1          0        161          0          0          1          0          0          0      3.991k        7.787k      3.373k         423          1
+lift_bytes/"min:IMUL_MEMb"        5101081978 ns    388240000 ns            1          0         13          6          0        290          0          0          1          1          0          0      4.048k        8.174k      3.249k         877          2
+lift_bytes/"min:MOV_RAX_RAX"      4254777367 ns    351713000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.568k        5.355k      2.149k         638          2
+lift_bytes/"min:AND_ONE_CHILD_1"  3845021418 ns    308964000 ns            1          0          6          4          0        149          0          0          1          1          0          0      3.775k         7.43k      3.251k         404          1
+lift_bytes/"min:AND_ONE_CHILD_2"  3861951226 ns    359139000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.601k        5.421k      2.189k         631          2
+lift_source/"min:small"           3201672927 ns    385619000 ns            1          0          5          6          0        226          0          0          0          0          0          0      1.903k          4.1k      1.676k         521          1
+lift_source/"min:adds"            58968020269 ns   3319085000 ns            1          0        282         28          0     1.956k          0          0         20          0          0          0       34.2k       69.311k     23.083k     12.028k          8
+lift_source/"min:subs"            58657628562 ns   3094770000 ns            1          0        269         30          0     1.931k          0          0         21          9          0          0     33.484k       68.583k     22.911k     12.188k          9
+lift_source/"min:xors"            58700475209 ns   3289990000 ns            1          0        253          3          0     1.803k          0          0         15          0          0          0      33.41k        67.98k     22.522k     12.048k          7
+
+---
+
+[2023-01-25 13:31:10.229] [info] [bench] arch: x86
+[2023-01-25 13:31:10.230] [info] [bench] os: macos
+[2023-01-25 13:31:10.230] [info] [bench] using collapse ops optimization
+2023-01-25T13:31:10+01:00
+Running ./builds/cxx-common-custom/bench/circ-bench
+Run on (8 X 2300 MHz CPU s)
+CPU Caches:
+  L1 Data 48 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 512 KiB (x4)
+  L3 Unified 8192 KiB (x1)
+Load Average: 5.49, 3.95, 3.78
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Benchmark                                  Time             CPU   Iterations       AShr        Add       LShr        Mul      Nodes       SDiv       SRem        Shl        Sub       UDiv       URem V:AND V:CELLS V:NOT V:XOR  pop_count
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lift_bytes/"min:AND_AL_IMMb"      3533688908 ns    406844000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.732k      2.949k         424          1
+lift_bytes/"min:LEA_GPRv_AGEN_32" 4564285805 ns    391632000 ns            1          0         17          6          0        262          0          0          1          1          0          0      3.872k            8k      2.989k      1.139k          2
+lift_bytes/"min:LODSB"            3031025983 ns    309275000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.344k        6.725k      2.967k         414          1
+lift_bytes/"min:LODSB"            4357319784 ns    275262000 ns            1          0         15          0          0        127          0          0          0          0          0          0      3.808k        7.515k      3.155k         552          0
+lift_bytes/"min:LOOP_RELBRb"      3838500548 ns    325701000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.281k        6.579k      2.881k         417          1
+lift_bytes/"min:MOVSB"            5893356057 ns    286339000 ns            1          0         15          0          0        127          0          0          0          0          0          0      4.072k        7.935k      3.404k         459          0
+lift_bytes/"min:MOV_GPR8_GPR8_8A" 3335449516 ns    330196000 ns            1          0          6          5          0        170          0          0          1          1          0          0      3.207k        6.421k      2.863k         351          1
+lift_bytes/"min:PUSH_IMMz_32"     3474663850 ns    305549000 ns            1          0          6          5          0        166          0          0          1          1          0          0      3.091k        6.256k      2.742k         423          1
+lift_bytes/"min:PUSH_MEMv_32"     3904795329 ns    312213000 ns            1          0          5          0          0        169          0          0          1          0          0          0      3.179k        6.354k      2.613k         562          1
+lift_bytes/"min:SUB_AL_IMMb"      3808827084 ns    318906000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.735k      2.923k         453          1
+lift_bytes/"min:XOR_GPR8_GPR8_32" 3279771394 ns    335290000 ns            1          0          5          0          0        162          0          0          1          0          0          0      4.105k        8.086k      3.447k         534          1
+lift_bytes/"min:XOR_OrAX_IMMz_32" 3148405761 ns    324212000 ns            1          0          5          0          0        151          0          0          1          0          0          0      3.567k        7.159k      3.067k         525          1
+lift_bytes/"min:AND_MEMb_GPR8"    3682400391 ns    303180000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.048k        6.147k      2.641k         458          1
+lift_bytes/"min:ADD_GPR8_GPR8_02" 4099367191 ns    333757000 ns            1          0          8          1          0        161          0          0          1          0          0          0      3.991k        7.787k      3.373k         423          1
+lift_bytes/"min:IMUL_MEMb"        5020917444 ns    365776000 ns            1          0         13          6          0        290          0          0          1          1          0          0      4.048k        8.174k      3.249k         877          2
+lift_bytes/"min:MOV_RAX_RAX"      4766826766 ns    353210000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.568k        5.355k      2.149k         638          2
+lift_bytes/"min:AND_ONE_CHILD_1"  3840855709 ns    343882000 ns            1          0          6          4          0        149          0          0          1          1          0          0      3.775k         7.43k      3.251k         404          1
+lift_bytes/"min:AND_ONE_CHILD_2"  3605673658 ns    394079000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.601k        5.421k      2.189k         631          2
+lift_source/"min:small"           3017438948 ns    405997000 ns            1          0          5          6          0        226          0          0          0          0          0          0      1.903k          4.1k      1.676k         521          1
+lift_source/"min:adds"            64187770971 ns   3602312000 ns            1          0        282         28          0     1.956k          0          0         20          0          0          0       34.2k       69.311k     23.083k     12.028k          8
+lift_source/"min:subs"            61486713633 ns   3109528000 ns            1          0        269         30          0     1.931k          0          0         21          9          0          0     33.484k       68.583k     22.911k     12.188k          9
+lift_source/"min:xors"            54179778577 ns   3123995000 ns            1          0        253          3          0     1.803k          0          0         15          0          0          0      33.41k        67.98k     22.522k     12.048k          7
+
+---
+
+circ-bench(22730,0x7ff85b10e8c0) malloc: nano zone abandoned due to inability to preallocate reserved vm space.
+[2023-01-25 13:38:01.143] [info] [bench] arch: x86
+[2023-01-25 13:38:01.144] [info] [bench] os: macos
+[2023-01-25 13:38:01.144] [info] [bench] using overflow flag mix optimization
+[2023-01-25 13:38:01.144] [info] [bench] using merge advices optimization
+[2023-01-25 13:38:01.144] [info] [bench] using collapse ops optimization
+2023-01-25T13:38:01+01:00
+Running ./builds/cxx-common-custom/bench/circ-bench
+Run on (8 X 2300 MHz CPU s)
+CPU Caches:
+  L1 Data 48 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 512 KiB (x4)
+  L3 Unified 8192 KiB (x1)
+Load Average: 3.00, 3.37, 3.54
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Benchmark                                  Time             CPU   Iterations       AShr        Add       LShr        Mul      Nodes       SDiv       SRem        Shl        Sub       UDiv       URem V:AND V:CELLS V:NOT V:XOR  pop_count
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lift_bytes/"min:AND_AL_IMMb"      3528579268 ns    376699000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.732k      2.949k         424          1
+lift_bytes/"min:LEA_GPRv_AGEN_32" 4697320275 ns    399093000 ns            1          0         17          6          0        262          0          0          1          1          0          0      3.872k            8k      2.989k      1.139k          2
+lift_bytes/"min:LODSB"            3277421392 ns    332856000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.344k        6.725k      2.967k         414          1
+lift_bytes/"min:LODSB"            4970730841 ns    290794000 ns            1          0         15          0          0        127          0          0          0          0          0          0      3.808k        7.515k      3.155k         552          0
+lift_bytes/"min:LOOP_RELBRb"      4845307809 ns    457522000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.281k        6.579k      2.881k         417          1
+lift_bytes/"min:MOVSB"            5010697657 ns    416936000 ns            1          0         15          0          0        127          0          0          0          0          0          0      3.871k        7.624k      3.214k         539          0
+lift_bytes/"min:MOV_GPR8_GPR8_8A" 3472632596 ns    308764000 ns            1          0          6          5          0        170          0          0          1          1          0          0      3.231k        6.459k      2.886k         342          1
+lift_bytes/"min:PUSH_IMMz_32"     3509918497 ns    335014000 ns            1          0          6          5          0        166          0          0          1          1          0          0      3.091k        6.256k      2.742k         423          1
+lift_bytes/"min:PUSH_MEMv_32"     3667354972 ns    323588000 ns            1          0          5          0          0        169          0          0          1          0          0          0      3.245k        6.455k      2.667k         543          1
+lift_bytes/"min:SUB_AL_IMMb"      3074823783 ns    319825000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.176k        6.445k      2.748k         521          1
+lift_bytes/"min:XOR_GPR8_GPR8_32" 3971116751 ns    318878000 ns            1          0          5          0          0        162          0          0          1          0          0          0      3.945k        7.831k      3.306k         580          1
+lift_bytes/"min:XOR_OrAX_IMMz_32" 3884372789 ns    336221000 ns            1          0          5          0          0        151          0          0          1          0          0          0      3.505k        7.069k      3.025k         539          1
+lift_bytes/"min:AND_MEMb_GPR8"    3167096044 ns    329963000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.218k        6.415k      2.733k         464          1
+lift_bytes/"min:ADD_GPR8_GPR8_02" 4348083017 ns    317006000 ns            1          0          8          1          0        161          0          0          1          0          0          0      3.893k        7.634k      3.282k         459          1
+lift_bytes/"min:IMUL_MEMb"        4190620944 ns    354160000 ns            1          0         13          6          0        290          0          0          1          1          0          0      3.755k        7.704k       2.96k         989          2
+lift_bytes/"min:MOV_RAX_RAX"      3019753341 ns    332978000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.296k        4.902k      1.874k         732          2
+lift_bytes/"min:AND_ONE_CHILD_1"  3834922594 ns    306815000 ns            1          0          6          4          0        149          0          0          1          1          0          0      3.865k        7.559k       3.32k         374          1
+lift_bytes/"min:AND_ONE_CHILD_2"  3682304310 ns    325462000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.454k        5.173k       2.04k         679          2
+lift_source/"min:small"           2550789139 ns    330387500 ns            2          0         10         12          0        452          0          0          0          0          0          0      3.728k        8.037k      3.248k        1061          2
+lift_source/"min:adds"            59792743626 ns   3610991000 ns            1          0        282         28          0     1.957k          0          0         20          0          0          0     33.562k       68.106k     22.522k     12.022k          8
+lift_source/"min:subs"            62034008284 ns   3317457000 ns            1          0        269         30          0     1.938k          0          0         21          9          0          0     33.076k       67.677k     22.438k     12.163k          9
+lift_source/"min:xors"            57667187785 ns   3284398000 ns            1          0        253          3          0     1.804k          0          0         15          0          0          0     33.162k         67.5k     22.365k     11.973k          7
+
+---
+
+circ-bench(25613,0x7ff85b10e8c0) malloc: nano zone abandoned due to inability to preallocate reserved vm space.
+[2023-01-25 13:46:53.986] [info] [bench] arch: x86
+[2023-01-25 13:46:53.987] [info] [bench] os: macos
+[2023-01-25 13:46:53.987] [info] [bench] using conjure ALU optimization
+2023-01-25T13:46:53+01:00
+Running ./builds/cxx-common-custom/bench/circ-bench
+Run on (8 X 2300 MHz CPU s)
+CPU Caches:
+  L1 Data 48 KiB (x4)
+  L1 Instruction 32 KiB (x4)
+  L2 Unified 512 KiB (x4)
+  L3 Unified 8192 KiB (x1)
+Load Average: 4.17, 3.61, 3.54
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Benchmark                                  Time             CPU   Iterations       AShr        Add       LShr        Mul      Nodes       SDiv       SRem        Shl        Sub       UDiv       URem V:AND V:CELLS V:NOT V:XOR  pop_count
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+lift_bytes/"min:AND_AL_IMMb"      3603485902 ns    400405000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.732k      2.949k         424          1
+lift_bytes/"min:LEA_GPRv_AGEN_32" 5953047069 ns    462859000 ns            1          0         17          6          0        262          0          0          1          1          0          0      3.872k            8k      2.989k      1.139k          2
+lift_bytes/"min:LODSB"            3740072449 ns    377185000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.344k        6.725k      2.967k         414          1
+lift_bytes/"min:LODSB"            5649091800 ns    374533000 ns            1          0         15          0          0        127          0          0          0          0          0          0      3.808k        7.515k      3.155k         552          0
+lift_bytes/"min:LOOP_RELBRb"      4436479813 ns    345572000 ns            1          0          5          1          0        187          0          0          1          0          0          0      3.281k        6.579k      2.881k         417          1
+lift_bytes/"min:MOVSB"            6397673110 ns    298584000 ns            1          0         15          0          0        127          0          0          0          0          0          0      4.072k        7.935k      3.404k         459          0
+lift_bytes/"min:MOV_GPR8_GPR8_8A" 3422515611 ns    390777000 ns            1          0          6          5          0        170          0          0          1          1          0          0      3.103k        6.247k      2.761k         383          1
+lift_bytes/"min:PUSH_IMMz_32"     4420545236 ns    346539000 ns            1          0          6          5          0        166          0          0          1          1          0          0      2.912k        5.963k      2.572k         479          1
+lift_bytes/"min:PUSH_MEMv_32"     7542232242 ns    486133000 ns            1          0          5          0          0        169          0          0          1          0          0          0      3.149k        6.295k      2.569k         577          1
+lift_bytes/"min:SUB_AL_IMMb"      5448856121 ns    493723000 ns            1          0          5          1          0        192          0          0          1          0          0          0      3.359k        6.735k      2.923k         453          1
+lift_bytes/"min:XOR_GPR8_GPR8_32" 4160713102 ns    378313000 ns            1          0          5          0          0        162          0          0          1          0          0          0      3.998k        7.899k      3.339k         562          1
+lift_bytes/"min:XOR_OrAX_IMMz_32" 5823173737 ns    357044000 ns            1          0          5          0          0        151          0          0          1          0          0          0      3.539k        7.123k      3.062k         522          1
+lift_bytes/"min:AND_MEMb_GPR8"    4916267972 ns    386122000 ns            1          0          5          1          0        187          0          0          1          0          0          0        3.3k        6.633k      2.909k         424          1
+lift_bytes/"min:ADD_GPR8_GPR8_02" 4277386402 ns    419017000 ns            1          0          8          1          0        161          0          0          1          0          0          0      3.872k        7.587k       3.26k         455          1
+lift_bytes/"min:IMUL_MEMb"        5536613237 ns    437791000 ns            1          0         13          6          0        290          0          0          1          1          0          0      3.971k        8.049k      3.095k         983          2
+lift_bytes/"min:MOV_RAX_RAX"      3334785185 ns    353911000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.379k        5.042k      1.958k         705          2
+lift_bytes/"min:AND_ONE_CHILD_1"  4190589985 ns    335116000 ns            1          0          6          4          0        149          0          0          1          1          0          0      3.837k        7.548k      3.314k         397          1
+lift_bytes/"min:AND_ONE_CHILD_2"  4210007303 ns    389247000 ns            1          0          7          5          0        210          0          0          1          1          0          0      2.986k         6.06k      2.567k         507          2
+lift_source/"min:small"           5539905908 ns    657374000 ns            1          0          5          6          0        226          0          0          0          0          0          0      1.893k        4.089k      1.675k         521          1
+lift_source/"min:adds"            79953188876 ns   5668881000 ns            1          0        282         28          0     1.955k          0          0         20          0          0          0     33.985k       68.973k     22.938k      12.05k          8
+lift_source/"min:subs"            84437168555 ns   3906173000 ns            1          0        269         30          0     1.938k          0          0         21          9          0          0     33.733k       68.976k     22.938k     12.305k          9
+lift_source/"min:xors"            88105557403 ns   3891398000 ns            1          0        253          3          0     1.802k          0          0         15          0          0          0     33.054k       67.299k     22.262k     11.983k          7
