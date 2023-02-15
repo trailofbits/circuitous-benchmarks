@@ -29,7 +29,9 @@ DEFINE_bool(overflow_flag_mix, false, "Enable overflow flags mix optimization.")
 DEFINE_bool(merge_advices, false, "Enable merge advices optimization.");
 DEFINE_bool(collapse_ops, false, "Enable colapse ops optimization.");
 
-DEFINE_bool(conjure_alu, false, "Enable conjure ALU optimization.");
+DEFINE_bool(conjure_alu, false, "Enable conjure ALU optimization (both additive and multiplicative).");
+DEFINE_bool(conjure_alu_add, false, "Enable conjure ALU optimization for additive operations..");
+DEFINE_bool(conjure_alu_mul, false, "Enable conjure ALU optimization for multiplicative operations.");
 DEFINE_bool(switch_as_mux, false, "Enable verilog to emit switches as muxes.");
 
 DEFINE_bool(postprocess_as_llvm, false, "Enable postprocess llvm optimization passes.");
@@ -60,7 +62,13 @@ int main(int argc, char** argv) {
 
     opts.switch_as_mux = FLAGS_switch_as_mux;
 
-    opts.conjure_alu = FLAGS_conjure_alu;
+    if (FLAGS_conjure_alu) {
+        opts.conjure_alu_add = true;
+        opts.conjure_alu_mul = true;
+    } else {
+        opts.conjure_alu_add = FLAGS_conjure_alu_add;
+        opts.conjure_alu_mul = FLAGS_conjure_alu_mul;
+    }
 
     opts.postprocess_as_llvm = FLAGS_postprocess_as_llvm;
 
@@ -91,8 +99,12 @@ int main(int argc, char** argv) {
         spdlog::info("[bench] using collapse ops optimization");
     }
 
-    if (opts.conjure_alu) {
-        spdlog::info("[bench] using conjure ALU optimization");
+    if (opts.conjure_alu_add) {
+        spdlog::info("[bench] using conjure addivite ALU optimization");
+    }
+
+    if (opts.conjure_alu_mul) {
+        spdlog::info("[bench] using conjure multiplicative ALU optimization");
     }
 
     if (opts.switch_as_mux) {
