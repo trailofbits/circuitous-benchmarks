@@ -27,7 +27,7 @@ namespace circ::bench
         circuit_owner_t make_circuit(auto &&bytes) {
             auto ctx  = circuit_ctx{ to_string(options.os), to_string(options.arch) };
             auto circ = smithy(std::move(ctx)).smelt(bytes).forge();
-            return optimize(std::move(circ));
+            return postprocess(optimize(std::move(circ)));
         }
     } // namespace detail
 
