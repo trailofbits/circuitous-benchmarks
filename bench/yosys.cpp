@@ -10,6 +10,8 @@
 #include <fmt/core.h>
 #include <circuitous/Printers/Verilog.hpp>
 
+#include <boost/filesystem.hpp>
+
 namespace circ::bench::yosys
 {
     struct command_result_t {
@@ -73,12 +75,14 @@ namespace circ::bench::yosys
     }
 
     verilog::cells_count_t run(const circuit_owner_t &circuit) {
-        auto verilog = "benchmark.tmp.v";
-        auto name    = "circuit";
+        auto temp = boost::filesystem::unique_path();
+        auto name = "circuit";
 
-        std::ofstream file(verilog);
-        circ::print::verilog::print(file, name, circuit.get());
-        return run(verilog_file_t{ verilog });
+        std::ofstream file(temp.native());
+        circ::print::verilog::print(file, name, circuit.get(), options.switch_as_mux);
+        auto counts = run(verilog_file_t{ temp.native() });
+        boost::filesystem::remove(temp);
+        return counts;
     }
 
     verilog::cells_count_t run(const verilog_file_t &file) {
