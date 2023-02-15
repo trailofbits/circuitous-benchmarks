@@ -43,17 +43,21 @@ namespace circ::bench
     };
 
     struct verilog_cell_counter_t {
+        explicit verilog_cell_counter_t( std::filesystem::path wd )
+            : working_directory(wd)
+        {}
+
         void count(const circuit_owner_t &circuit) {
-            for (const auto &[k, v] : yosys::run(circuit)) {
+            for (const auto &[k, v] : yosys::run(working_directory, circuit)) {
                 _counts[k] += v;
             }
         }
 
-        void count(const verilog_file_t &file) {
-            for (const auto &[k, v] : yosys::run(file)) {
-                _counts[k] += v;
-            }
-        }
+        // void count(const verilog_file_t &file) {
+        //     for (const auto &[k, v] : yosys::run(working_directory, file)) {
+        //         _counts[k] += v;
+        //     }
+        // }
 
         std::size_t get() const {
             std::size_t cell_count = 0;
@@ -68,6 +72,7 @@ namespace circ::bench
 
       private:
         verilog::cells_count_t _counts;
+        std::filesystem::path working_directory;
     };
 
     void update_varilog_counters(state_t &state, const verilog_cell_counter_t &counter);

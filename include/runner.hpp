@@ -8,11 +8,31 @@
 #include "common.hpp"
 
 #include <benchmark/benchmark.h>
+#include <boost/filesystem.hpp>
+
 
 namespace circ::bench
 {
+    static inline std::filesystem::path benchmark_directory(state_t& state) {
+        auto top_level = options.directory;
+        // FIXME use benchmark name
+        auto temp = boost::filesystem::unique_path();
+        return top_level / temp.string();
+    }
+
+    static inline std::filesystem::path setup(state_t& state) {
+        auto path = benchmark_directory(state);
+        if (std::filesystem::exists(path)) {
+            throw std::runtime_error(fmt::format("output directory {} already exists", path.string()));
+        }
+        std::filesystem::create_directory(path);
+        return path;
+    }
+
     template< typename input_t >
     void lift(state_t& state, input_t&& input) {
+        auto wd = setup(state);
+
         std::vector counters = {
             operation_counter_t{ node_kind_t::kMul },
             operation_counter_t{ node_kind_t::kAdd },
@@ -28,7 +48,7 @@ namespace circ::bench
             operation_counter_t{ node_kind_t::kOperation }
         };
 
-        verilog_cell_counter_t verilog_counter;
+        verilog_cell_counter_t verilog_counter(wd);
 
         state.KeepRunningBatch(1);
 
@@ -49,7 +69,8 @@ namespace circ::bench
 
     template< typename input_t >
     void run_on_verilog(state_t& state, input_t&& input) {
-        verilog_cell_counter_t verilog_counter;
+        auto wd = setup(state);
+        verilog_cell_counter_t verilog_counter(wd);
 
         state.KeepRunningBatch(1);
 
