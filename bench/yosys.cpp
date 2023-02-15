@@ -88,7 +88,9 @@ namespace circ::bench::yosys
     verilog::cells_count_t run(const verilog_file_t &file) {
         verilog::cells_count_t count = {
             {verilog::cell_kind::and_cell, 0},
+            {verilog::cell_kind::mux_cell, 0},
             {verilog::cell_kind::not_cell, 0},
+            {verilog::cell_kind::or_cell,  0},
             {verilog::cell_kind::xor_cell, 0}
         };
 
@@ -96,9 +98,12 @@ namespace circ::bench::yosys
         auto result = command::exec(cmd);
 
         auto nums = stats(result.output);
+
         count[verilog::cell_kind::and_cell] += nums[0];
-        count[verilog::cell_kind::not_cell] += nums[1];
-        count[verilog::cell_kind::xor_cell] += nums[2];
+        count[verilog::cell_kind::mux_cell] += nums[1];
+        count[verilog::cell_kind::not_cell] += nums[2];
+        count[verilog::cell_kind::or_cell]  += nums[3];
+        count[verilog::cell_kind::xor_cell] += nums[4];
 
         return count;
     }

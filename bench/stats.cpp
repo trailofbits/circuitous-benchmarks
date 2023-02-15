@@ -22,4 +22,13 @@ namespace circ::bench
         return counter.total_count(kind);
     }
 
+    void update_varilog_counters(state_t &state, const verilog_cell_counter_t &counter) {
+        state.counters["V:CELLS"] = counter_t(counter.get(), average);
+        state.counters["V:AND"] = counter_t(counter.get(verilog::cell_kind::and_cell), average);
+        state.counters["V:MUX"] = counter_t(counter.get(verilog::cell_kind::mux_cell), average);
+        state.counters["V:NOT"] = counter_t(counter.get(verilog::cell_kind::not_cell), average);
+        state.counters["V:OR"]  = counter_t(counter.get(verilog::cell_kind::or_cell), average);
+        state.counters["V:XOR"] = counter_t(counter.get(verilog::cell_kind::xor_cell), average);
+    }
+
 } // namespace circ::bench

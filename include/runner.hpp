@@ -42,10 +42,7 @@ namespace circ::bench
             state.counters[counter.name()] = counter_t(counter.get(), average);
         }
 
-        state.counters["VERILOG:CELLS"] = counter_t(verilog_counter.get(), average);
-        state.counters["VERILOG:AND"] = counter_t(verilog_counter.get(verilog::cell_kind::and_cell), average);
-        state.counters["VERILOG:NOT"] = counter_t(verilog_counter.get(verilog::cell_kind::not_cell), average);
-        state.counters["VERILOG:XOR"] = counter_t(verilog_counter.get(verilog::cell_kind::xor_cell), average);
+        update_varilog_counters(state, verilog_counter);
     }
 
     template< typename input_t >
@@ -56,10 +53,7 @@ namespace circ::bench
             verilog_counter.count(input);
         }
 
-        state.counters["VERILOG:CELLS"] = counter_t(verilog_counter.get(), average);
-        state.counters["VERILOG:AND"] = counter_t(verilog_counter.get(verilog::cell_kind::and_cell), average);
-        state.counters["VERILOG:NOT"] = counter_t(verilog_counter.get(verilog::cell_kind::not_cell), average);
-        state.counters["VERILOG:XOR"] = counter_t(verilog_counter.get(verilog::cell_kind::xor_cell), average);
+        update_varilog_counters(state, verilog_counter);
     }
 
 } // namespace circ::bench
