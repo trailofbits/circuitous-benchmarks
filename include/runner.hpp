@@ -30,6 +30,8 @@ namespace circ::bench
 
         verilog_cell_counter_t verilog_counter;
 
+        state.KeepRunningBatch(1);
+
         for (auto _ : state) {
             auto ci = make_circuit(input);
             for (auto &counter : counters) {
@@ -48,6 +50,8 @@ namespace circ::bench
     template< typename input_t >
     void run_on_verilog(state_t& state, input_t&& input) {
         verilog_cell_counter_t verilog_counter;
+
+        state.KeepRunningBatch(1);
 
         for (auto _ : state) {
             verilog_counter.count(input);
