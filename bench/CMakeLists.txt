@@ -17,6 +17,8 @@ target_link_libraries( circ-bench
         fmt::fmt
         spdlog::spdlog
 
+        Boost::filesystem
+
         circuitous::ir
         circuitous::lifter
         circuitous::transforms
