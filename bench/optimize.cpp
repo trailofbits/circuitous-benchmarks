@@ -48,15 +48,26 @@ namespace circ::bench
             opt.template emplace_pass< circ::ConjureALUPass >( "conjure-alu", kinds );
         }
 
-        // if (options.eqsat) {
-        //     auto &[_, pass] = opt.add_pass("eqsat");
-        //     auto eqsat = std::dynamic_pointer_cast< circ::EqualitySaturationPass >(pass);
-        //     eqsat->add_rules(circ::eqsat::parse_rules(options.eqsat->patterns.string()));
-        //     circuit = opt.run(std::move(circuit));
-        // }
+
+        return opt.run(std::move(circuit));
+    }
+
+    circuit_owner_t llvm_optimize(circuit_owner_t circuit) {
+        auto ctx = std::make_shared< llvm::LLVMContext >();
+        auto mod = std::make_unique< llvm::Module >( "reopt", *ctx );
+
+        auto fn = circ::convert_to_llvm( circuit.get(), mod.get(), "reoptfn" );
+        circ::optimize_silently( { fn } );
+        std::size_t ptr_size = options.arch == arch_t::x86 ? 32 : 64;
+        return circ::lower_fn( fn, ptr_size );
+    }
+
+    circuit_owner_t postprocess(circuit_owner_t circuit) {
+        if (options.postprocess_as_llvm) {
+            circuit = llvm_optimize(std::move(circuit));
+        }
 
         return circuit;
     }
-
 
 } // namespace circ::bench

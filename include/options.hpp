@@ -67,6 +67,8 @@ namespace circ::bench
         bool conjure_alu       = false;
 
         bool switch_as_mux     = false;
+
+        bool postprocess_as_llvm  = false;
     };
 
     extern options_t options;

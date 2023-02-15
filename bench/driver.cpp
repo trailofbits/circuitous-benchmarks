@@ -32,6 +32,7 @@ DEFINE_bool(collapse_ops, false, "Enable colapse ops optimization.");
 DEFINE_bool(conjure_alu, false, "Enable conjure ALU optimization.");
 DEFINE_bool(switch_as_mux, false, "Enable verilog to emit switches as muxes.");
 
+DEFINE_bool(postprocess_as_llvm, false, "Enable postprocess llvm optimization passes.");
 
 int main(int argc, char** argv) {
     benchmark::Initialize(&argc, argv);
@@ -60,6 +61,8 @@ int main(int argc, char** argv) {
     opts.switch_as_mux = FLAGS_switch_as_mux;
 
     opts.conjure_alu = FLAGS_conjure_alu;
+
+    opts.postprocess_as_llvm = FLAGS_postprocess_as_llvm;
 
     if (FLAGS_verbose) {
         circ::add_sink< circ::severity::kill >(std::cerr);
@@ -94,6 +97,10 @@ int main(int argc, char** argv) {
 
     if (opts.switch_as_mux) {
         spdlog::info("[bench] emiting switch as mux");
+    }
+
+    if (opts.postprocess_as_llvm) {
+        spdlog::info("[bench] posprocess circuit using llvm optimizations");
     }
 
     benchmark::RunSpecifiedBenchmarks();
