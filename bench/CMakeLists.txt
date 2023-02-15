@@ -3,7 +3,6 @@ add_executable( circ-bench
     lifter.cpp
     simple.cpp
     from_source.cpp
-    from_verilog.cpp
     optimize.cpp
     options.cpp
     stats.cpp
