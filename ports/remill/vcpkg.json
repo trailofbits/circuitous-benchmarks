@@ -20,17 +20,17 @@
         "xed"
     ],
     "default-features": [
-        "cxx-common-llvm-14"
+        "cxx-common-llvm-15"
     ],
     "features": {
         "system-llvm": {
             "description": "Build with system llvm"
         },
-        "cxx-common-llvm-14": {
-            "description": "Build with cxx-common llvm-14 port",
+        "cxx-common-llvm-15": {
+            "description": "Build with cxx-common llvm-15 port",
             "dependencies": [
                 {
-                    "name": "llvm-14",
+                    "name": "llvm-15",
                     "default-features": false,
                     "features": [ "cxx-common-targets" ]
                 }
