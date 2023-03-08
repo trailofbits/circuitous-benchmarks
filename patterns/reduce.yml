@@ -1,0 +1,163 @@
+[imm:reduce]
+
+fold-imm-identities:
+  - (op_input_immediate ?a)
+  - (?a)
+
+[logic:trivial]
+
+reduce-trivial-and-rhs:
+  - (op_And 1:1 ?a)
+  - (?a)
+
+reduce-trivial-and-lhs:
+  - (op_And ?a 1:1)
+  - (?a)
+
+reduce-trivial-or-rhs:
+  - (op_Or 1:1 ?a)
+  - (1:1)
+
+reduce-trivial-or-lhs:
+  - (op_Or ?a 1:1)
+  - (1:1)
+
+[add:trivial]
+
+reduce-trivial-add-rhs-i8:
+  - (op_Add 0:8 ?a)
+  - (?a)
+
+reduce-trivial-add-lhs-i8:
+  - (op_Add ?a 0:8)
+  - (?a)
+
+reduce-trivial-add-rhs-i16:
+  - (op_Add 0:16 ?a)
+  - (?a)
+
+reduce-trivial-add-lhs-i16:
+  - (op_Add ?a 0:16)
+  - (?a)
+
+reduce-trivial-add-rhs-i32:
+  - (op_Add 0:32 ?a)
+  - (?a)
+
+reduce-trivial-add-lhs-i32:
+  - (op_Add ?a 0:32)
+  - (?a)
+
+reduce-trivial-add-rhs-i64:
+  - (op_Add 0:64 ?a)
+  - (?a)
+
+reduce-trivial-add-lhs-i64:
+  - (op_Add ?a 0:64)
+  - (?a)
+
+[mul:trivial]
+
+reduce-trivial-mul-rhs-i8:
+  - (op_Mul 1:8 ?a)
+  - (?a)
+
+reduce-trivial-mul-lhs-i8:
+  - (op_Mul ?a 1:8)
+  - (?a)
+
+reduce-trivial-mul-rhs-i16:
+  - (op_Mul 1:16 ?a)
+  - (?a)
+
+reduce-trivial-mul-lhs-i16:
+  - (op_Mul ?a 1:16)
+  - (?a)
+
+reduce-trivial-mul-rhs-i32:
+  - (op_Mul 1:32 ?a)
+  - (?a)
+
+reduce-trivial-mul-lhs-i32:
+  - (op_Mul ?a 1:32)
+  - (?a)
+
+reduce-trivial-mul-rhs-i64:
+  - (op_Mul 1:64 ?a)
+  - (?a)
+
+reduce-trivial-mul-lhs-i64:
+  - (op_Mul ?a 1:64)
+  - (?a)
+
+reduce-trivial-mul-rhs-i8:
+  - (op_Mul 0:8 ?a)
+  - (0:8)
+
+reduce-trivial-mul-lhs-i8:
+  - (op_Mul ?a 0:8)
+  - (0:8)
+
+reduce-trivial-mul-rhs-i16:
+  - (op_Mul 0:16 ?a)
+  - (0:16)
+
+reduce-trivial-mul-lhs-i16:
+  - (op_Mul ?a 0:16)
+  - (0:16)
+
+reduce-trivial-mul-rhs-i32:
+  - (op_Mul 0:32 ?a)
+  - (0:32)
+
+reduce-trivial-mul-lhs-i32:
+  - (op_Mul ?a 0:32)
+  - (0:32)
+
+reduce-trivial-mul-rhs-i64:
+  - (op_Mul 0:64 ?a)
+  - (0:64)
+
+reduce-trivial-mul-lhs-i64:
+  - (op_Mul ?a 0:64)
+  - (0:64)
+
+[concat:trivial]
+
+reduce-trivial-concat:
+  - (op_concat ?a)
+  - (?a)
+
+[eq:trivial]
+
+reduce-i8-eq-to-i1-lhs-neg:
+  - (op_Icmp_eq 0:8 (op_ZExt ?a))
+  - (op_not ?a)
+
+reduce-i8-eq-to-i1-rhs-neg:
+  - (op_Icmp_eq (op_ZExt ?a) 0:8)
+  - (op_not ?a)
+
+reduce-i8-eq-to-i1-lhs:
+  - (op_Icmp_eq 1:8 (op_ZExt ?a))
+  - (?a)
+
+reduce-i8-eq-to-i1-rhs:
+  - (op_Icmp_eq (op_ZExt ?a) 1:8)
+  - (?a)
+
+reduce-trivial-eq-lhs-neg:
+  - (op_Icmp_eq 0:1 ?a)
+  - (op_not ?a)
+
+reduce-trivial-eq-rhs-neg:
+  - (op_Icmp_eq ?a 0:1)
+  - (op_not ?a)
+
+reduce-trivial-eq-lhs:
+  - (op_Icmp_eq 1:1 ?a)
+  - (?a)
+
+reduce-trivial-eq-rhs:
+  - (op_Icmp_eq ?a 1:1)
+  - (?a)
