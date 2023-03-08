@@ -63,11 +63,10 @@ namespace circ::bench
         std::filesystem::path directory;
         bool keep_files        = false;
 
-        bool overflow_flag_mix = false;
-        bool merge_advices     = false;
         bool collapse_ops      = false;
 
         bool conjure_alu_mul   = false;
+        bool conjure_alu_div   = false;
         bool conjure_alu_add   = false;
 
         bool switch_as_mux     = false;
