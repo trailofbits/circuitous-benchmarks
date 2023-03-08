@@ -19,6 +19,7 @@ project( circuitous-benchmarks
   HOMEPAGE_URL "https://github.com/trailofbits/circuitous-benchmark.git"
 )
 
+find_package( zstd CONFIG REQUIRED )
 find_package( gap CONFIG REQUIRED )
 
 set_property( GLOBAL PROPERTY USE_FOLDERS ON )
