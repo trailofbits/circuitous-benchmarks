@@ -14,13 +14,29 @@ namespace circ::bench
 
     BENCHMARK_CAPTURE(lift_source, "min:small", "./data/small.ciff");
 
+    BENCHMARK_CAPTURE(lift_source, "min:adcs", "./data/adcs.ciff");
     BENCHMARK_CAPTURE(lift_source, "min:adds", "./data/adds.ciff");
+    BENCHMARK_CAPTURE(lift_source, "laky:half-ands", "./data/half-ands.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:ands", "./data/ands.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:calls", "./data/calls.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:cmps", "./data/cmps.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:decs", "./data/decs.ciff");
     BENCHMARK_CAPTURE(lift_source, "min:mul-16", "./data/mul-16.ciff");
-    BENCHMARK_CAPTURE(lift_source, "big:muls", "./data/muls.ciff");
     BENCHMARK_CAPTURE(lift_source, "min:idivs", "./data/idivs.ciff");
-    BENCHMARK_CAPTURE(lift_source, "big:divs", "./data/divs.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:incs", "./data/incs.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:jmps", "./data/jmps.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:leas", "./data/leas.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:movs", "./data/movs.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:ors", "./data/ors.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:stack", "./data/stack.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:sbbs", "./data/sbbs.ciff");
     BENCHMARK_CAPTURE(lift_source, "min:subs", "./data/subs.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:tests", "./data/tests.ciff");
+    BENCHMARK_CAPTURE(lift_source, "min:xchg", "./data/xchg.ciff");
     BENCHMARK_CAPTURE(lift_source, "min:xors", "./data/xors.ciff");
+
+    BENCHMARK_CAPTURE(lift_source, "big:muls", "./data/muls.ciff");
+    BENCHMARK_CAPTURE(lift_source, "big:divs", "./data/divs.ciff");
 
     BENCHMARK_CAPTURE(lift_source, "big:3d_image_toolkit", "./data/3d_image_toolkit.ciff");
     BENCHMARK_CAPTURE(lift_source, "big:router_simulator", "./data/router_simulator.ciff");
