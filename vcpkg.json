@@ -8,8 +8,6 @@
       "glog",
       "spdlog",
       "xed",
-      "llvm-14",
-      "remill",
       "boost-filesystem"
     ]
-  }
+}
