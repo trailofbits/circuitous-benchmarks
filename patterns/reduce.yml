@@ -4,6 +4,12 @@ fold-imm-identities:
   - (op_input_immediate ?a)
   - (?a)
 
+[ops-to-ands]
+
+decode-condtion-to-and:
+  - (op_And 1:1 ?a)
+  - (?a)
+
 [logic:trivial]
 
 reduce-trivial-and-rhs:
@@ -14,6 +20,7 @@ reduce-trivial-and-lhs:
   - (op_And ?a 1:1)
   - (?a)
 
+
 reduce-trivial-or-rhs:
   - (op_Or 1:1 ?a)
   - (1:1)
@@ -21,6 +28,50 @@ reduce-trivial-or-rhs:
 reduce-trivial-or-lhs:
   - (op_Or ?a 1:1)
   - (1:1)
+
+or-single-arg:
+  - (op_Or ?a)
+  - (?a)
+
+reduce-trivial-and-three-a:
+  - (op_And ?a 1:1 1:1)
+  - (?a)
+
+reduce-trivial-and-three-b:
+  - (op_And 1:1 ?a 1:1)
+  - (?a)
+
+reduce-trivial-and-three-c:
+  - (op_And 1:1 1:1 ?a)
+  - (?a)
+
+reduce-trivial-and-four-a:
+  - (op_And ?a 1:1 1:1 1:1)
+  - (?a)
+
+reduce-trivial-and-four-b:
+  - (op_And 1:1 ?a 1:1 1:1)
+  - (?a)
+
+reduce-trivial-and-four-c:
+  - (op_And 1:1 1:1 ?a 1:1)
+  - (?a)
+
+reduce-trivial-and-four-d:
+  - (op_And 1:1 1:1 1:1 ?a)
+  - (?a)
+
+reduce-trivial-and-five:
+  - (op_And 1:1 1:1 1:1 1:1 1:1)
+  - (1:1)
+
+reduce-trivial-and-five-a:
+  - (op_And ?a 1:1 1:1 1:1 1:1)
+  - (?a)
+
+reduce-trivial-and-five-a:
+  - (op_And 1:1 ?a 1:1 1:1 1:1)
+  - (?a)
 
 [add:trivial]
 
@@ -55,6 +106,126 @@ reduce-trivial-add-rhs-i64:
 reduce-trivial-add-lhs-i64:
   - (op_Add ?a 0:64)
   - (?a)
+
+[sub:trivial]
+
+reduce-trivial-sub-i8:
+  - (op_Sub ?a 0:8)
+  - (?a)
+
+reduce-trivial-sub-i16:
+  - (op_Sub ?a 0:16)
+  - (?a)
+
+reduce-trivial-sub-i32:
+  - (op_Sub ?a 0:32)
+  - (?a)
+
+reduce-trivial-sub-i64:
+  - (op_Sub ?a 0:64)
+  - (?a)
+
+[shl:trivial]
+
+reduce-trivial-shl-lhs-i8:
+  - (op_Shl ?a 0:8)
+  - (?a)
+
+reduce-trivial-shl-lhs-i16:
+  - (op_Shl ?a 0:16)
+  - (?a)
+
+reduce-trivial-shl-lhs-i32:
+  - (op_Shl ?a 0:32)
+  - (?a)
+
+reduce-trivial-shl-lhs-i64:
+  - (op_Shl ?a 0:64)
+  - (?a)
+
+reduce-trivial-shl-rhs-i8:
+  - (op_Shl 0:8 ?a)
+  - (0:8)
+
+reduce-trivial-shl-rhs-i16:
+  - (op_Shl 0:16 ?a)
+  - (0:16)
+
+reduce-trivial-shl-rhs-i32:
+  - (op_Shl 0:32 ?a)
+  - (0:32)
+
+reduce-trivial-shl-rhs-i64:
+  - (op_Shl 0:64 ?a)
+  - (0:64)
+
+[lshr:trivial]
+
+reduce-trivial-lshr-lhs-i8:
+  - (op_LShr ?a 0:8)
+  - (?a)
+
+reduce-trivial-lshr-lhs-i16:
+  - (op_LShr ?a 0:16)
+  - (?a)
+
+reduce-trivial-lshr-lhs-i32:
+  - (op_LShr ?a 0:32)
+  - (?a)
+
+reduce-trivial-lshr-lhs-i64:
+  - (op_LShr ?a 0:64)
+  - (?a)
+
+reduce-trivial-lshr-rhs-i8:
+  - (op_LShr 0:8 ?a)
+  - (0:8)
+
+reduce-trivial-lshr-rhs-i16:
+  - (op_LShr 0:16 ?a)
+  - (0:16)
+
+reduce-trivial-lshr-rhs-i32:
+  - (op_LShr 0:32 ?a)
+  - (0:32)
+
+reduce-trivial-lshr-rhs-i64:
+  - (op_LShr 0:64 ?a)
+  - (0:64)
+
+[ashr:trivial]
+
+reduce-trivial-ashr-lhs-i8:
+  - (op_AShr ?a 0:8)
+  - (?a)
+
+reduce-trivial-ashr-lhs-i16:
+  - (op_AShr ?a 0:16)
+  - (?a)
+
+reduce-trivial-ashr-lhs-i32:
+  - (op_AShr ?a 0:32)
+  - (?a)
+
+reduce-trivial-ashr-lhs-i64:
+  - (op_AShr ?a 0:64)
+  - (?a)
+
+reduce-trivial-ashr-rhs-i8:
+  - (op_AShr 0:8 ?a)
+  - (0:8)
+
+reduce-trivial-ashr-rhs-i16:
+  - (op_AShr 0:16 ?a)
+  - (0:16)
+
+reduce-trivial-ashr-rhs-i32:
+  - (op_AShr 0:32 ?a)
+  - (0:32)
+
+reduce-trivial-ashr-rhs-i64:
+  - (op_AShr 0:64 ?a)
+  - (0:64)
 
 [mul:trivial]
 
@@ -161,3 +332,27 @@ reduce-trivial-eq-lhs:
 reduce-trivial-eq-rhs:
   - (op_Icmp_eq ?a 1:1)
   - (?a)
+
+[parity]
+
+reduce-and-parity-1:
+  - (op_Trunc:1 (op_Xor (op_And ?a 1:8) 1:8))
+  - (op_not (op_Trunc ?a))
+
+reduce-and-parity-2:
+  - (op_Trunc:1 (op_Xor (op_And 1:8 ?a) 1:8))
+  - (op_not (op_Trunc:1 ?a))
+
+reduce-and-parity-3:
+  - (op_Trunc:1 (op_Xor 1:8 (op_And ?a 1:8)))
+  - (op_not (op_Trunc:1 ?a))
+
+reduce-and-parity-3:
+  - (op_Trunc:1 (op_Xor 1:8 (op_And 1:8 ?a)))
+  - (op_not (op_Trunc:1 ?a))
+
+[icmp:trivial]
+
+icmp-eq-trivial:
+  - (op_Icmp_eq ?a ?a)
+  - (1:1)
