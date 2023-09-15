@@ -8,6 +8,7 @@
       "glog",
       "spdlog",
       "xed",
-      "boost-filesystem"
+      "boost-filesystem",
+      "zstd"
     ]
 }
