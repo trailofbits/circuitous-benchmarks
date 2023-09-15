@@ -57,7 +57,7 @@ find_package( fmt CONFIG REQUIRED )
 find_package( spdlog CONFIG REQUIRED )
 find_package( Boost COMPONENTS system filesystem REQUIRED )
 
-find_package(LLVM 15 REQUIRED CONFIG)
+find_package(LLVM 16 REQUIRED CONFIG)
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
 message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
 
