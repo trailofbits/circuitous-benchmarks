@@ -60,9 +60,14 @@ namespace circ::bench
             verilog_counter.count(ci);
         }
 
+        #pragma GCC diagnostic push
+        #pragma GCC diagnostic ignored "-Wimplicit-int-float-conversion"
+
         for (const auto &counter : counters) {
             state.counters[counter.name()] = counter_t(counter.get(), average);
         }
+
+        #pragma GCC diagnostic pop
 
         update_varilog_counters(state, verilog_counter);
     }
