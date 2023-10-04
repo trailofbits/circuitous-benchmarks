@@ -22,6 +22,9 @@ namespace circ::bench
         return counter.total_count(kind);
     }
 
+    #pragma GCC diagnostic push
+    #pragma GCC diagnostic ignored "-Wimplicit-int-float-conversion"
+
     void update_varilog_counters(state_t &state, const verilog_cell_counter_t &counter) {
         state.counters["V:CELLS"] = counter_t(counter.get(), average);
         state.counters["V:AND"] = counter_t(counter.get(verilog::cell_kind::and_cell), average);
@@ -30,5 +33,7 @@ namespace circ::bench
         state.counters["V:OR"]  = counter_t(counter.get(verilog::cell_kind::or_cell), average);
         state.counters["V:XOR"] = counter_t(counter.get(verilog::cell_kind::xor_cell), average);
     }
+
+    #pragma GCC diagnostic pop
 
 } // namespace circ::bench
