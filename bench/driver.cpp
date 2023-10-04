@@ -16,7 +16,6 @@
 
 #include <iostream>
 #include <chrono>
-#include <format>
 
 #include "options.hpp"
 
