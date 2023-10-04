@@ -51,6 +51,23 @@ namespace circ::bench
         throw std::runtime_error("unknown architecture");
     }
 
+    enum class smithy_type {
+        muxes, disjunctions
+    };
+
+    static inline std::string to_string(smithy_type arch) {
+        switch (arch) {
+            case smithy_type::muxes: return "muxes";
+            case smithy_type::disjunctions: return "disjunctions";
+        }
+    }
+
+    static inline smithy_type smithy_type_from_string(std::string_view str) {
+        if (str == "muxes") return smithy_type::muxes;
+        if (str == "disjunctions") return smithy_type::disjunctions;
+        throw std::runtime_error("unknown smithy type");
+    }
+
     struct eqsat_options_t {
         std::filesystem::path patterns;
     };
@@ -58,6 +75,7 @@ namespace circ::bench
     struct options_t {
         os_t os;
         arch_t arch;
+        smithy_type smithy_type;
         std::optional< eqsat_options_t > eqsat;
 
         std::filesystem::path directory;

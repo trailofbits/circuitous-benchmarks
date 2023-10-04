@@ -27,6 +27,7 @@ DEFINE_string(patterns, "", "Path to the equality saturation patterns.");
 
 DEFINE_string(arch, "x86", "");
 DEFINE_string(os, "macos", "");
+DEFINE_string(smithy, "muxes", "");
 
 DEFINE_string(out_dir, "", "Output directory.");
 DEFINE_bool(keep_files, false, "Keep benchmark produces files.");
@@ -88,6 +89,7 @@ int main(int argc, char** argv) {
 
     opts.arch = circ::bench::arch_from_string(FLAGS_arch);
     opts.os = circ::bench::os_from_string(FLAGS_os);
+    opts.smithy_type = circ::bench::smithy_type_from_string(FLAGS_smithy);
 
     if (!FLAGS_patterns.empty()) {
         opts.eqsat = circ::bench::eqsat_options_t{FLAGS_patterns};
@@ -121,6 +123,7 @@ int main(int argc, char** argv) {
     spdlog::info("[bench] directory: {}", opts.directory.string());
     spdlog::info("[bench] arch: {}", to_string(opts.arch));
     spdlog::info("[bench] os: {}", to_string(opts.os));
+    spdlog::info("[bench] smithy: {}", to_string(opts.smithy_type));
 
     if (opts.eqsat) {
         spdlog::info("[bench] using eqsat with patterns: {}", std::string(opts.eqsat->patterns));

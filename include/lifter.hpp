@@ -24,11 +24,25 @@ namespace circ::bench
 
     namespace detail
     {
-        circuit_owner_t make_circuit(auto &&bytes) {
+        auto make_smithy(auto &&bytes) {
             auto ctx  = circuit_ctx{ to_string(options.os), to_string(options.arch) };
-            auto circ = smithy(std::move(ctx)).smelt(bytes).forge();
-            return postprocess(optimize(std::move(circ)));
+            if (options.smithy_type == smithy_type::muxes) {
+                auto type = circ::lifter_kind::mux_heavy;
+                return smithy(std::move(ctx)).make(type, bytes);
+            }
+
+            if (options.smithy_type == smithy_type::disjunctions) {
+                auto type = circ::lifter_kind::disjunctions;
+                return smithy(std::move(ctx)).make(type, bytes);
+            }
+
+            throw std::runtime_error("unknown smithy type");
         }
+
+        circuit_owner_t make_circuit(auto &&bytes) {
+            return postprocess(optimize(make_smithy(bytes)));
+        }
+
     } // namespace detail
 
     static inline std::string_view as_string_view(const std::vector< uint8_t > &buf)
