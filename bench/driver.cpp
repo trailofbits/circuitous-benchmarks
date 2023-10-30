@@ -56,9 +56,6 @@ static std::filesystem::path benchmarks_directory() {
 
 static void setup() {
     auto &opts = circ::bench::options;
-    if (std::filesystem::exists(opts.directory)) {
-        throw std::runtime_error(fmt::format("output directory {} already exists", opts.directory.string()));
-    }
     std::filesystem::create_directory(opts.directory);
 }
 

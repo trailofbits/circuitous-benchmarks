@@ -22,9 +22,6 @@ namespace circ::bench
 
     static inline std::filesystem::path setup(state_t& state) {
         auto path = benchmark_directory(state);
-        if (std::filesystem::exists(path)) {
-            throw std::runtime_error(fmt::format("output directory {} already exists", path.string()));
-        }
         std::filesystem::create_directory(path);
         return path;
     }

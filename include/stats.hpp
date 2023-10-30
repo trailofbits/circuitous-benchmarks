@@ -53,12 +53,6 @@ namespace circ::bench
             }
         }
 
-        // void count(const verilog_file_t &file) {
-        //     for (const auto &[k, v] : yosys::run(working_directory, file)) {
-        //         _counts[k] += v;
-        //     }
-        // }
-
         std::size_t get() const {
             std::size_t cell_count = 0;
             for (auto [_, c] : _counts) {
