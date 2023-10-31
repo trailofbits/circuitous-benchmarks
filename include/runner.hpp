@@ -10,19 +10,25 @@
 #include <benchmark/benchmark.h>
 #include <boost/filesystem.hpp>
 
+#include <string_view>
 
 namespace circ::bench
 {
     static inline std::filesystem::path benchmark_directory(state_t& state) {
         auto top_level = options.directory;
-        // FIXME use benchmark name
-        auto temp = boost::filesystem::unique_path();
-        return top_level / temp.string();
+        std::string name = state.name();
+        std::string_view view = name;
+        auto delim = view.find_first_of("/");
+        auto pref = view.substr(0, delim);
+        auto bench = view.substr(delim + 1);
+        bench.remove_prefix(1);
+        bench.remove_suffix(1);
+        return top_level / pref / bench;
     }
 
     static inline std::filesystem::path setup(state_t& state) {
         auto path = benchmark_directory(state);
-        std::filesystem::create_directory(path);
+        std::filesystem::create_directories(path);
         return path;
     }
 
